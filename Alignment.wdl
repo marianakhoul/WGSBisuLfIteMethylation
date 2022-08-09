@@ -3,8 +3,6 @@
 ##
 ## Task Description
 
-version 1.0
-
 task bwameth_indexing {
 	input{
 		File ref_fasta
