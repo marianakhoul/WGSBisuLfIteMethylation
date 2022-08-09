@@ -110,6 +110,10 @@ workflow WGSBisuLfIteMethylation {
 	call Fastqc.multiqc {
 		input:
 			docker_image = multiqc_docker,
+			alnMetrics_input = picard_metrics.alignment,
+			insertMetrics_input = picard_metrics.insert_size,
+			fastqc_input = fastqc.output_html,
+			qualimap_input = qualimap.qualimap_report
 	}
 	
 }
