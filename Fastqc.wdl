@@ -75,7 +75,7 @@ task qualimap{
     Int threads
     
     command {
-      qualimap bamqc -bam ${input} -outdir ${fastqc_dir}/qualimap -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G &> ${log}
+      qualimap bamqc -bam ${input_bam} -outdir ${fastqc_dir}/qualimap -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G &> ${log}
     }
     runtime {
      docker: docker_image
