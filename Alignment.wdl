@@ -4,7 +4,7 @@
 ## Task Description
 
 task bwameth_indexing {
-  input {
+
     File ref_fasta
     String docker_image
     File bwameth_script
@@ -17,7 +17,7 @@ task bwameth_indexing {
     String ref_pac = ref_fasta_name + ".pac"
     String ref_sa = ref_fasta_name + ".sa"
     String ref_fasta_index = ref_fasta_name + ".fa.fai"
-  }
+    
   command <<<
      ~{bwameth_script} index ~{ref_fasta} 2> ~{log}
     samtools faidx ~{ref_fasta} 2> ~{log}
