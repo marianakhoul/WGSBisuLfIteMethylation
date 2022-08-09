@@ -5,7 +5,7 @@
 ##
 ## Workflow Description
 
-import ./Alignment.wdl as Alignment
+import "./Alignment.wdl" as Alignment
 
 workflow WGSBisuLfIteMethylation {
 	
