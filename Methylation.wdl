@@ -58,7 +58,7 @@ workflow WGSBisuLfIteMethylation {
 	call Alignment.sort_bam {
 		input: 
 			input_bam = bwameth_align.output_unsorted_bam,
-			sample_name = sample_name
+			sample_name = sample_name,
 			docker_image = samtools_docker
 	}
 	
