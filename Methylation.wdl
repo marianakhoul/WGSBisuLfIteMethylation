@@ -72,7 +72,7 @@ workflow WGSBisuLfIteMethylation {
 	call Alignment.index_bam {
 		input:
 			sample_name = sample_name,
-			input_bam = mark_duplicates.output_sorted_bam,
+			input_bam = mark_duplicates.output_bam,
 			alignment_dir = alignment_dir,
 			docker_image = gotc_docker
 	}
