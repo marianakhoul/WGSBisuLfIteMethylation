@@ -19,6 +19,6 @@ task fastqc {
       docker: docker_image
      }
      output{
-      File output_html = "${fastqc_dir}fastqc/${sample_name}_fastqc.html"
+      File output_html = "${fastqc_dir}/fastqc/${sample_name}_fastqc.html"
      }
 }
