@@ -5,7 +5,7 @@
 ##
 ## Workflow Description
 
-import "https://github.com/marianakhoul/WGSBisuLfIteMethylation/blob/main/Alignment.wdl" as Alignment
+import "Alignment.wdl" as Alignment
 
 workflow WGSBisuLfIteMethylation {
 	
