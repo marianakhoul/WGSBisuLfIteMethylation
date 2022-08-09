@@ -22,7 +22,12 @@ workflow WGSBisuLfIteMethylation {
 	# Reference Fasta
 	File ref_fasta
 
+	# BWA Script
 	File bwameth_script
+	
+	# Fastq files
+	File fastq_file_1
+	File fastq_file_2
 
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
