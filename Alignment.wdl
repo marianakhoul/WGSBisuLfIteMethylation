@@ -112,3 +112,20 @@ task mark_duplicates {
      }
 }
 
+task index_bam {
+
+     String sample_name
+     File input_bam
+     String alignment_dir
+     String docker_image
+
+     command {
+		samtools index ${alignment_dir}${input_bam} ${alignment_dir}${sample_name}.bai
+     }
+     runtime {
+		docker: docker_image
+     }
+     output{
+		File indexed_bam = "${alignment_dir}${sample_name}.bai"
+     }
+}
