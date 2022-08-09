@@ -79,7 +79,7 @@ workflow WGSBisuLfIteMethylation {
 	}
 	
 	## QC
-	call Fastqc.fastq {
+	call Fastqc.fastqc {
 		input:
 			docker_image = fastqc_docker,
 			sample_name = sample_name,
