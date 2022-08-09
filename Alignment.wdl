@@ -65,3 +65,21 @@ task bwameth_align {
 	}
 }
 
+task sort_bam {
+
+  File input_bam
+  Int threads
+  String sample_name
+  File log
+  String alignment_dir
+	
+  command {
+  	samtools sort -o ${alignment_dir}${sample_name}.sorted.bam -@ ${threads} ${input_bam} 2> {$log}
+   }
+  runtime {
+  	docker: docker_image
+  }
+  output{
+  	File output_sorted_bam = "${alignment_dir}${sample_name}.sorted.bam"
+  }
+}
