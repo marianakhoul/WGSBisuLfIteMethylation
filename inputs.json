@@ -1,0 +1,17 @@
+{
+	"##_COMMENT": "REFERENCE FILES", 
+  	"WGSBisuLfIteMethylation.ref_fasta": "/location/to/Reference/Fasta/hg38.fasta",
+
+  	"##_COMMENT": "PYTHON FILES",
+  	"WGSBisuLfIteMethylation.bwameth_script": "/location/to/pyton/scripts/bwameth.py",
+
+  	"##_COMMENT": "LOG FILES",
+  	"WGSBisuLfIteMethylation.bwameth_indexing.log": "/path/to/output/file.log",
+  	"WGSBisuLfIteMethylation.bwameth_align.log": "/path/to/output/file.log",
+  	"WGSBisuLfIteMethylation.sort_bam.log": "/path/to/output/file.log",
+  	"WGSBisuLfIteMethylation.mark_duplicates.log": "/path/to/output/file.log",
+
+  	"##_COMMENT": "OUTPUT DIRECTORIES",
+  	"WGSBisuLfIteMethylation.alignment_dir": "/path/to/output/alignment_dir",
+
+}
