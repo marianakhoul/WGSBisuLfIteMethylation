@@ -36,7 +36,7 @@ workflow WGSBisuLfIteMethylation {
 			ref_fasta = ref_fasta,
 			bwameth_script = bwameth_script
 	}
-	call bwameth_align {
+	call Alignment.bwameth_align {
 		input:
 			ref_fasta = ref_fasta,
 			ref_amb = Alignment.bwameth_indexing.ref_amb,
