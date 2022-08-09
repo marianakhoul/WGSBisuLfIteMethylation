@@ -5,7 +5,7 @@
 ##
 ## Workflow Description
 
-import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
+import "/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
 
 
 workflow WGSBisuLfIteMethylation {
