@@ -78,8 +78,8 @@ task sort_bam {
   	samtools sort -o ${alignment_dir}${sample_name}.sorted.bam -@ ${threads} ${input_bam} 2> {$log}
    }
   runtime {
-  	docker: docker_image
-  }
+		docker: docker_image
+	}
   output{
   	File output_sorted_bam = "${alignment_dir}${sample_name}.sorted.bam"
   }
