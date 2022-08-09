@@ -5,8 +5,6 @@
 ##
 ## Workflow Description
 
-version 1.0
-
 import ./Alignment.wdl as Alignment
 
 workflow WGSBisuLfIteMethylation {
