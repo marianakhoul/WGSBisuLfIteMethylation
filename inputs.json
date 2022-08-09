@@ -1,4 +1,7 @@
-{
+{	"##_COMMENT": "REFERENCE FILES", 
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "/path/to/fastq_file_1.fastq",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "/path/to/fastq_file_2.fastq",
+ 	
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "/location/to/Reference/Fasta/hg38.fasta",
 
