@@ -31,4 +31,21 @@ workflow WGSBisuLfIteMethylation {
 			ref_fasta = ref_fasta,
 			bwameth_script = bwameth_script
 	}
+	call bwameth_align {
+		input:
+			ref_fasta = ref_fasta,
+			ref_amb = Alignment.bwameth_indexing.ref_amb,
+			ref_ann = Alignment.bwameth_indexing.ref_ann,
+	  		ref_bwt = Alignment.bwameth_indexing.ref_bwt,
+	  		ref_pac = Alignment.bwameth_indexing.ref_pac,
+	  		ref_sa = Alignment.bwameth_indexing.ref_sa,
+	  		ref_fasta_index = Alignment.bwameth_indexing.ref_fasta_index,
+	  		ref_fasta = bwa_meth_docker,
+	  		docker_image = python_docker,
+	  		bwameth_script = bwameth_script,
+	  		alignment_dir = alignment_dir,
+	  		sample_name = sample_name,
+	  		fastq_file_1 = fastq_file_1,
+	  		fastq_file_2 = fastq_file_2
+	}
 }
