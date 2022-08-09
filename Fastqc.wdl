@@ -64,7 +64,7 @@ task picard_metrics {
 }
 
 
-task qualimap{
+task qualimap {
     
     String docker_image
     String sample_name
@@ -82,5 +82,17 @@ task qualimap{
     }
     output {
      File qualimap_report = "${fastqc_dir}/qualimap/${sample_name}/qualimapReport.html"
+    }
+}
+
+task multiqc {
+
+    String docker_image
+    String sample_name
+    
+    command {
+    }
+    runtime {
+     docker: docker_image
     }
 }
