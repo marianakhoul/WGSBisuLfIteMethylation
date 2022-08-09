@@ -39,7 +39,7 @@ workflow WGSBisuLfIteMethylation {
 	call Alignment.bwameth_align {
 		input:
 			ref_fasta = ref_fasta,
-			ref_amb = Alignment.bwameth_indexing.ref_amb,
+			ref_amb = bwameth_indexing.ref_amb,
 			ref_ann = Alignment.bwameth_indexing.ref_ann,
 	  		ref_bwt = Alignment.bwameth_indexing.ref_bwt,
 	  		ref_pac = Alignment.bwameth_indexing.ref_pac,
