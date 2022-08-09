@@ -72,6 +72,7 @@ task sort_bam {
   String sample_name
   File log
   String alignment_dir
+  String docker_image
 	
   command {
   	samtools sort -o ${alignment_dir}${sample_name}.sorted.bam -@ ${threads} ${input_bam} 2> {$log}
