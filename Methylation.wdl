@@ -1,6 +1,6 @@
 ## This pipeline is the conversion of the Snakefile from https://github.com/MarWoes/wg-blimp.git
 ##
-## This is pipeline #2 for the DNAnexus Pilot Study. Purpose of this script is for Whole Genome BisuLfIte sequencing ##Methylation analysis Pipeline.
+## This is pipeline #2 for the DNAnexus Pilot Study. Purpose of this script is for Whole Genome BisuLfIte sequencing Methylation analysis Pipeline.
 ##
 ##
 ## Workflow Description
@@ -68,7 +68,7 @@ workflow WGSBisuLfIteMethylation {
 			sample_name = sample_name,
 			input_bam = sort_bam.output_sorted_bam,
 			alignment_dir = alignment_dir,
-			docker_image = gotc_docker
+			docker_image = picard_docker
 	}
 	call Alignment.index_bam {
 		input:
@@ -84,6 +84,20 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = fastqc_docker,
 			sample_name = sample_name,
 			input_bam = mark_duplicates.output_bam
+	}
+	
+	call Fastqc.picard_metrics {
+		input:
+			ref_fasta = ref_fasta,
+			ref_amb = bwameth_indexing.ref_amb,
+			ref_ann = bwameth_indexing.ref_ann,
+	  		ref_bwt = bwameth_indexing.ref_bwt,
+	  		ref_pac = bwameth_indexing.ref_pac,
+	  		ref_sa = bwameth_indexing.ref_sa,
+	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
+			input_bam = mark_duplicates.output_bam,
+			sample_name = sample_name,
+			docker_image = picard_docker
 	}
 	
 }
