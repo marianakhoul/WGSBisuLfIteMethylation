@@ -62,4 +62,11 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = samtools_docker
 	}
 	
+	call Alignment.mark_duplicates {
+		input:
+			sample_name = sample_name,
+			input_bam = sort_bam.output_sorted_bam,
+			alignment_dir = alignment_dir
+	}
+	
 }
