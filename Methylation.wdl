@@ -5,6 +5,8 @@
 ##
 ## Workflow Description
 
+version 1.0
+
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
 
 workflow WGSBisuLfIteMethylation {
