@@ -76,4 +76,7 @@ workflow WGSBisuLfIteMethylation {
 			alignment_dir = alignment_dir,
 			docker_image = gotc_docker
 	}
+	
+	## QC
+	
 }
