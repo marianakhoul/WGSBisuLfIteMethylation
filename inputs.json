@@ -14,6 +14,8 @@
   	"WGSBisuLfIteMethylation.sort_bam.log": "/path/to/output/file.log",
   	"WGSBisuLfIteMethylation.mark_duplicates.log": "/path/to/output/file.log",
  	"WGSBisuLfIteMethylation.fastqc.log": "/path/to/output/file.log",
+ 	"WGSBisuLfIteMethylation.picard_metrics.log": "/path/to/output/file.log",
+ 
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
   	"WGSBisuLfIteMethylation.alignment_dir": "/path/to/output/alignment_dir",
