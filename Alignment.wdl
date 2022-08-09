@@ -86,30 +86,29 @@ task sort_bam {
 }
 
 task mark_duplicates {
-	input{
-	 String sample_name
-	 File input_bam
-	 File log
-	 String alignment_dir
-	 String tmp_dir
-	 Float max_memory
-	 String docker_image
 
-	}
-	command {
-     picard -Xmx${max_memory}G \
-     MarkDuplicates \
-     -I ${alignment_dir}${input_bam} \
-     -O ${alignment_dir}${sample_name}.bam \
-     -M ${alignment_dir}${sample_name}-dup-metrics.txt \
-     -TMP_DIR ${tmp_dir} &> ${log}'
-	}
-	runtime {
-	 docker = docker_image
-	}
-	output{
-	 File output_bam = "${alignment_dir}${sample_name}.bam"
-	 File metrics = "${alignment_dir}${sample_name}-dup-metrics.txt" 
-	}
+      String sample_name
+      File input_bam
+      File log
+      String alignment_dir
+      String tmp_dir
+      Float max_memory
+      String docker_image
+
+     command {
+      picard -Xmx${max_memory}G \
+      MarkDuplicates \
+      -I ${alignment_dir}${input_bam} \
+      -O ${alignment_dir}${sample_name}.bam \
+      -M ${alignment_dir}${sample_name}-dup-metrics.txt \
+      -TMP_DIR ${tmp_dir} &> ${log}'
+     }
+     runtime {
+      docker = docker_image
+     }
+     output{
+      File output_bam = "${alignment_dir}${sample_name}.bam"
+      File metrics = "${alignment_dir}${sample_name}-dup-metrics.txt" 
+     }
 }
 
