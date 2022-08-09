@@ -1,11 +1,11 @@
-version 1.0
-
 ## This pipeline is the conversion of the Snakefile from https://github.com/MarWoes/wg-blimp.git
 ##
 ## This is pipeline #2 for the DNAnexus Pilot Study. Purpose of this script is for Whole Genome BisuLfIte sequencing ##Methylation analysis Pipeline.
 ##
 ##
 ## Workflow Description
+
+version 1.0
 
 import ./Alignment.wdl as Alignment
 
