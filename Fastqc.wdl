@@ -84,6 +84,34 @@ task qualimap {
      File qualimap_report = "${fastqc_dir}/qualimap/${sample_name}/qualimapReport.html"
     }
 }
+task mbias {
+
+    String docker_image
+    String sample_name
+    File ref_amb
+    File ref_ann
+    File ref_bwt
+    File ref_pac
+    File ref_sa
+    File ref_fasta_index
+    File ref_fasta
+    File bam_index
+    File bam_file
+    String mbias_dir
+    File log
+    
+    command {
+     MethylDackel mbias ${ref_fasta} ${bam_file} ${mbias_dir}/{sample_name} &> ${log}
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File mbias_ot = "${mbias_dir}/${sample_name}_OT.svg"
+     File mbias_ob = "${mbias_dir}/${sample_name}_OB.svg"
+    }
+    
+}
 
 task multiqc {
 
@@ -102,6 +130,9 @@ task multiqc {
     }
     runtime {
      docker: docker_image
+    }
+    output {
+    File multiqc_report = "${fastqc_dir}/multiqc_report.html"
     }
     
 }
