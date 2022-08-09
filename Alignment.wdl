@@ -74,9 +74,9 @@ task sort_bam {
   String alignment_dir
   String docker_image
 	
-  command {
+  command <<<
   	samtools sort -o ${alignment_dir}${sample_name}.sorted.bam -@ ${threads} ${input_bam} 2> {$log}
-   }
+   >>>
   runtime {
 		docker: docker_image
 	}
