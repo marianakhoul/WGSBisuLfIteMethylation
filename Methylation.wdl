@@ -6,6 +6,7 @@
 ## Workflow Description
 
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
+import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Fastqc.wdl" as Fastqc
 
 
 workflow WGSBisuLfIteMethylation {
@@ -78,5 +79,11 @@ workflow WGSBisuLfIteMethylation {
 	}
 	
 	## QC
+	call Fastqc.fastq{
+		input:
+			docker_image = fastqc_docker,
+			sample_name = sample_name,
+			input_bam = mark_duplicates.output_bam
+	}
 	
 }
