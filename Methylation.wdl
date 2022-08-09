@@ -19,6 +19,7 @@ workflow WGSBisuLfIteMethylation {
 	String qualimap_docker = "pegi3s/qualimap"
 	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
 	String samtools_docker = "biocontainers/samtools"
+	String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
 	
 	# Reference Fasta
 	File ref_fasta
@@ -66,7 +67,8 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			sample_name = sample_name,
 			input_bam = sort_bam.output_sorted_bam,
-			alignment_dir = alignment_dir
+			alignment_dir = alignment_dir,
+			docker_image = gotc_docker
 	}
 	
 }
