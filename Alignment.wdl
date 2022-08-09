@@ -4,7 +4,7 @@
 ## Task Description
 
 task bwameth_indexing {
-	input{
+	input {
 		File ref_fasta
 		String docker_image
 		File bwameth_script
@@ -25,7 +25,7 @@ task bwameth_indexing {
 	runtime {
 		docker: docker_image
 	}
-	output{
+	output {
 		File ref_amb = ${ref_amb}
 	  	File ref_ann = ${ref_ann}
 	  	File ref_bwt = ${ref_bwt}
