@@ -18,7 +18,6 @@ workflow WGSBisuLfIteMethylation {
 	String picard_docker = "broadinstitute/picard"
 	String qualimap_docker = "pegi3s/qualimap"
 	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
-	String samtools_docker = "biocontainers/samtools"
 	String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
 	
 	# Reference Fasta
@@ -60,7 +59,7 @@ workflow WGSBisuLfIteMethylation {
 		input: 
 			input_bam = bwameth_align.output_unsorted_bam,
 			sample_name = sample_name,
-			docker_image = samtools_docker
+			docker_image = gotc_docker
 	}
 	
 	call Alignment.mark_duplicates {
@@ -70,5 +69,11 @@ workflow WGSBisuLfIteMethylation {
 			alignment_dir = alignment_dir,
 			docker_image = gotc_docker
 	}
-	
+	call Alignment.index_bam {
+		input:
+			sample_name = sample_name,
+			input_bam = mark_duplicates.output_sorted_bam,
+			alignment_dir = alignment_dir,
+			docker_image = gotc_docker
+	}
 }
