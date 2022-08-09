@@ -103,7 +103,7 @@ workflow WGSBisuLfIteMethylation {
 	call Fastqc.qualimap {
 		input:
 			docker_image = qualimap_docker,
-			ample_name = sample_name,
+			sample_name = sample_name,
 			input_bam = mark_duplicates.output_bam
 	}
 	
