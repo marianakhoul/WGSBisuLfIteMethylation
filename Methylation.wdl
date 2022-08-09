@@ -18,6 +18,7 @@ workflow WGSBisuLfIteMethylation {
 	String picard_docker = "broadinstitute/picard"
 	String qualimap_docker = "pegi3s/qualimap"
 	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
+	String samtools_docker = "biocontainers/samtools"
 	
 	# Reference Fasta
 	File ref_fasta
@@ -53,4 +54,12 @@ workflow WGSBisuLfIteMethylation {
 	  		fastq_file_1 = fastq_file_1,
 	  		fastq_file_2 = fastq_file_2
 	}
+	
+	call Alignment.sort_bam {
+		input: 
+			input_bam = bwameth_align.output_unsorted_bam,
+			sample_name = sample_name
+			docker_image = samtools_docker
+	}
+	
 }
