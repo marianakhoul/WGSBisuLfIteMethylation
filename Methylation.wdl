@@ -18,7 +18,7 @@ workflow WGSBisuLfIteMethylation {
 	String fastqc_docker = "pegi3s/fastqc"
 	String picard_docker = "broadinstitute/picard"
 	String qualimap_docker = "pegi3s/qualimap"
-	String bwa_meth_docker = "pgcbioinfo/bwa-meth"
+	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
 	
 	# Reference Fasta
 	File ref_fasta
