@@ -13,7 +13,7 @@ task fastqc {
      File log
      
      command >>>
-      fastqc -o ${fastqc_dir} ${alignment_dir}${input_bam} &> ${log}
+      fastqc -o ~{fastqc_dir} ~{alignment_dir}~{input_bam} &> ~{log}
      <<<
      runtime{
       docker: docker_image
