@@ -30,7 +30,7 @@ task bwameth_indexing {
 }
 
 task bwameth_align {
-	input{
+
 		File ref_amb
 	  	File ref_ann
 	  	File ref_bwt
@@ -49,7 +49,6 @@ task bwameth_align {
 	  	String alignment_dir
 	  	String sample_name
 
-	}
 	command {
 		set -o pipefail
     	set -e
