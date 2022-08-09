@@ -1,9 +1,9 @@
-version 1.0
-
 ## Task associated with alignment for the whole Genome BisuLfIte sequencing Methylation analysis Pipeline.
 ##
 ##
 ## Task Description
+
+version 1.0
 
 task bwameth_indexing {
 	input{
