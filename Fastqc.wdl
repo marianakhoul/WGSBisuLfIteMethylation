@@ -89,10 +89,19 @@ task multiqc {
 
     String docker_image
     String sample_name
+    File alnMetrics_input
+    File insertMetrics_input
+    File fastqc_input
+    File qualimap_input
+    String fastqc_dir
+    File log
     
     command {
+     multiqc -f -o ${fastqc_dir} ${fastqc_dir}/fastqc ${fastqc_dir}/picard-metrics ${fastqc_dir}/qualimap &> ${log} 
+
     }
     runtime {
      docker: docker_image
     }
+    
 }
