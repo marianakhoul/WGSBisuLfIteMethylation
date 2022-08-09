@@ -104,7 +104,7 @@ task mark_duplicates {
       -TMP_DIR ${tmp_dir} &> ${log}'
      }
      runtime {
-      docker = docker_image
+      docker: docker_image
      }
      output{
       File output_bam = "${alignment_dir}${sample_name}.bam"
