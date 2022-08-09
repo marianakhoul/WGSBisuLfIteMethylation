@@ -13,7 +13,7 @@ task fastqc {
      File log
      
      command <<<
-      fastqc -o ~{fastqc_dir} ~{alignment_dir}~{input_bam} &> ~{log}
+      fastqc -o ~{fastqc_dir}/fastqc ~{alignment_dir}~{input_bam} &> ~{log}
      >>>
      runtime{
       docker: docker_image
@@ -60,5 +60,27 @@ task picard_metrics {
      File alignment   = "${fastqc_dir}/picard-metrics/${sample_name}-alignment.txt"
      File insert_size = "${fastqc_dir}/picard-metrics/${sample_name}-insert-size.txt"
      File hist        = "${fastqc_dir}/picard-metrics/${sample_name}-hist.pdf"
+    }
+}
+
+
+task qualimap{
+    
+    String docker_image
+    String sample_name
+    File input_bam
+    String fastqc_dir
+    File log
+    Int memory
+    Int threads
+    
+    command {
+      qualimap bamqc -bam ${input} -outdir ${fastqc_dir}/qualimap -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G &> ${log}
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File qualimap_report = "${fastqc_dir}/qualimap/${sample_name}/qualimapReport.html"
     }
 }
