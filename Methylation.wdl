@@ -14,7 +14,11 @@ workflow WGSBisuLfIteMethylation {
 	String wg_blimp_R_script_path = "./scripts"
 	String sample_name
 
-	String python_docker
+	String multiqc_docker = "ewels/multiqc"
+	String fastqc_docker = "pegi3s/fastqc"
+	String picard_docker = "broadinstitute/picard"
+	String qualimap_docker = "pegi3s/qualimap"
+	String bwa_meth_docker = "pgcbioinfo/bwa-meth"
 	
 	# Reference Fasta
 	File ref_fasta
