@@ -107,4 +107,9 @@ workflow WGSBisuLfIteMethylation {
 			input_bam = mark_duplicates.output_bam
 	}
 	
+	call Fastqc.multiqc {
+		input:
+			docker_image = multiqc_docker,
+	}
+	
 }
