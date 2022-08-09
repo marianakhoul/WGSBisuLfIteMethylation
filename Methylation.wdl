@@ -109,7 +109,15 @@ workflow WGSBisuLfIteMethylation {
 	
 	call Fastqc.mbias {
 		input:
-			
+			bam_index = index_bam.indexed_bam,
+			bam_file = mark_duplicates.output_bam,
+			ref_fasta = ref_fasta,
+			ref_amb = bwameth_indexing.ref_amb,
+			ref_ann = bwameth_indexing.ref_ann,
+	  		ref_bwt = bwameth_indexing.ref_bwt,
+	  		ref_pac = bwameth_indexing.ref_pac,
+	  		ref_sa = bwameth_indexing.ref_sa,
+	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
 	}
 	
 	call Fastqc.multiqc {
