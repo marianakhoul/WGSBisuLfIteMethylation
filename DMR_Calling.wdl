@@ -54,7 +54,7 @@ task bedgraph_to_methylation_ratio {
 task metilene_input {
     
     String metilene_dir
-    File bedgraph_to_methylation_ratio
+    File bedgraph_ratio
     String methylation_dir
     String docker_image
     
