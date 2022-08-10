@@ -140,6 +140,7 @@ task multiqc {
 task methylation_metrics {
     
     String fastqc_dir
+    String docker_image
     File log
     File bed_graphs
     String wg_blimp_R_script_path
@@ -148,6 +149,7 @@ task methylation_metrics {
      R ${wg_blimp_R_script_path}/methylationMetrics.R
     }
     runtime {
+     docker: docker_image
     }
     output {
      File methylation_metrics = "${fastqc_dir}/methylation_metrics.csv"
