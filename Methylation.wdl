@@ -17,6 +17,7 @@ workflow WGSBisuLfIteMethylation {
 	
 	# Docker Images
 	File MethylDackel_docker
+	File python_docker
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
 	String picard_docker = "broadinstitute/picard"
