@@ -91,7 +91,7 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_pac = bwameth_indexing.ref_pac,
 	  		ref_sa = bwameth_indexing.ref_sa,
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
-	  		docker_image = bwa_meth_docker,
+	  		docker_image = bwa_meth_docker_image,
 	  		bwameth_script = bwameth_script,
 	  		alignment_dir = alignment_dir,
 	  		sample_name = sample_name,
