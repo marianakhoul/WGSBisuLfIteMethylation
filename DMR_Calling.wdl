@@ -161,3 +161,26 @@ task camel_dmr {
     }
 
 }
+
+
+task bsseq {
+    
+    String docker_image
+    File bedgraph_ratio
+    String methylation_dir
+    String bsseq_dir
+    String wg_blimp_R_script_path
+    Int io_threads
+    
+    command {
+     R ${wg_blimp_R_script_path}/bsseq.R
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File rdata_file = "${bsseq_dir}/bsseq.Rdata"
+     File csv_file = "${bsseq_dir}/dmrs.csv"
+     File pdf_file = "${bsseq_dir}/top100.pdf"
+    }
+}
