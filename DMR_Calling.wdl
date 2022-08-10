@@ -40,7 +40,7 @@ task bedgraph_to_methylation_ratio {
     String wg_blimp_R_script_path
     
     command {
-     Rscript ${wg_blimp_R_script_path}/transformBedGraph.R
+     R ${wg_blimp_R_script_path}/transformBedGraph.R
     }
     runtime {
      docker: docker_image
