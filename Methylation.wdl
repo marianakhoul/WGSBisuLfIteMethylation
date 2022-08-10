@@ -211,8 +211,7 @@ workflow WGSBisuLfIteMethylation {
 			camel_modules_path = camel_modules_path,
 			docker_image = python_docker,
 			ref_fasta = ref_fasta,
-			reference_fasta = reference_fasta,
-			camel_dir = camel_dir
+			reference_fasta = reference_fasta
 	}
 	
 	call DMR_Calling.camel_call {
