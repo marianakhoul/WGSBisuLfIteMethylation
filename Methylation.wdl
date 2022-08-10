@@ -211,7 +211,8 @@ workflow WGSBisuLfIteMethylation {
 			camel_modules_path = camel_modules_path,
 			docker_image = python_docker,
 			ref_fasta = ref_fasta,
-			reference_fasta = reference_fasta
+			reference_fasta = reference_fasta,
+			camel_dir = camel_dir
 	}
 	
 	call DMR_Calling.camel_call {
@@ -221,7 +222,8 @@ workflow WGSBisuLfIteMethylation {
 			reference_output = camel_index.reference_output,
 			input_bam = mark_duplicates.output_bam,
 			bam_bai = index_bam.indexed_bam,
-			sample_name = sample_name
+			sample_name = sample_name,
+			camel_dir = camel_dir
 	}
 	
 	call DMR_Calling.camel_dmr {
@@ -229,9 +231,8 @@ workflow WGSBisuLfIteMethylation {
 			camel_modules_path = camel_modules_path,
 			docker_image = python_docker,
 			reference_output = camel_index.reference_output,
-			input_bam = mark_duplicates.output_bam,
-			bam_bai = index_bam.indexed_bam,
 			case = case,
-			control = control
+			control = control,
+			camel_dir = camel_dir
 	}
 }
