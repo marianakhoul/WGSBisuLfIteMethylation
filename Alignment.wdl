@@ -44,7 +44,6 @@ task bwameth_align {
 
    Int threads
    File bwameth_script
-   String docker_image
    String alignment_dir
    String sample_name
 
@@ -57,7 +56,7 @@ task bwameth_align {
     samtools view -b - > ${alignment_dir}${sample_name}.unsorted.bam 2>/dev/null
   }
   runtime {
-    docker: docker_image
+    docker: "pgcbioinfo/bwa-meth:latest"
   }
   output{
     File output_unsorted_bam = "${alignment_dir}${sample_name}.unsorted.bam"
