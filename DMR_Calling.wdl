@@ -87,6 +87,6 @@ task metilene {
      docker: docker_image
     }
     output {
-     File output = "${metilene_dir}/dmrs.csv"
+     File metilene_output = "${metilene_dir}/dmrs.csv"
     }
 }
