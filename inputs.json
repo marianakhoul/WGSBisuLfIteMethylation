@@ -1,31 +1,31 @@
 {	"##_COMMENT": "REFERENCE FILES", 
- 	"WGSBisuLfIteMethylation.fastq_file_1": "/path/to/fastq_file_1.fastq",
- 	"WGSBisuLfIteMethylation.fastq_file_2": "/path/to/fastq_file_2.fastq",
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
  	
 	"##_COMMENT": "REFERENCE FILES", 
-  	"WGSBisuLfIteMethylation.ref_fasta": "/location/to/Reference/Fasta/hg38.fasta",
+  	"WGSBisuLfIteMethylation.ref_fasta": "${}",
 
   	"##_COMMENT": "PYTHON FILES",
   	"WGSBisuLfIteMethylation.bwameth_script": "./bwameth.py",
 
   	"##_COMMENT": "LOG FILES",
-  	"WGSBisuLfIteMethylation.bwameth_indexing.log": "/path/to/output/file.log",
-  	"WGSBisuLfIteMethylation.bwameth_align.log": "/path/to/output/file.log",
-  	"WGSBisuLfIteMethylation.sort_bam.log": "/path/to/output/file.log",
-  	"WGSBisuLfIteMethylation.mark_duplicates.log": "/path/to/output/file.log",
- 	"WGSBisuLfIteMethylation.fastqc.log": "/path/to/output/file.log",
- 	"WGSBisuLfIteMethylation.picard_metrics.log": "/path/to/output/file.log",
- 	"WGSBisuLfIteMethylation.qualimap.log": "/path/to/output/file.log",
+  	"WGSBisuLfIteMethylation.bwameth_indexing.log": "${}",
+  	"WGSBisuLfIteMethylation.bwameth_align.log": "${}",
+  	"WGSBisuLfIteMethylation.sort_bam.log": "${}",
+  	"WGSBisuLfIteMethylation.mark_duplicates.log": "${}",
+ 	"WGSBisuLfIteMethylation.fastqc.log": "${}",
+ 	"WGSBisuLfIteMethylation.picard_metrics.log": "${}",
+ 	"WGSBisuLfIteMethylation.qualimap.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
-  	"WGSBisuLfIteMethylation.alignment_dir": "/path/to/output/alignment_dir",
- 	"WGSBisuLfIteMethylation.fastqc_dir": "/path/to/output/fastqc_dir",
+  	"WGSBisuLfIteMethylation.alignment_dir": "${}",
+ 	"WGSBisuLfIteMethylation.fastqc_dir": "${}",
  
  	"##_COMMENT": "Memory",
- 	"WGSBisuLfIteMethylation.qualimap.memory": 5,
+ 	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
  
  	"##_COMMENT": "Threads",
- 	"WGSBisuLfIteMethylation.qualimap.threads": 5,
+ 	"WGSBisuLfIteMethylation.qualimap.threads": "${}"
  
 
 }
