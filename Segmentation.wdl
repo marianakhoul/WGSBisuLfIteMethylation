@@ -5,6 +5,7 @@
 
 task methylseekr {
 
+    String methylation_dir
     String wg_blimp_R_script_path
     String docker_image
     String sample_name
