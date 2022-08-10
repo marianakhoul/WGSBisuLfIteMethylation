@@ -251,7 +251,8 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			wg_blimp_R_script_path = wg_blimp_R_script_path,
 			docker_image = R_docker,
-			dmr_dir = dmr_dir
+			dmr_dir = dmr_dir,
+			ref_fasta_index = bwameth_indexing.ref_fasta_index
 			
 	}
 }
