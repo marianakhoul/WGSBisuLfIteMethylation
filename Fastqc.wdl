@@ -71,8 +71,8 @@ task qualimap {
     File input_bam
     String fastqc_dir
     File log
-    Int memory
-    Int threads
+    String memory
+    String threads
     
     command {
       qualimap bamqc -bam ${input_bam} -outdir ${fastqc_dir}/qualimap -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G &> ${log}
