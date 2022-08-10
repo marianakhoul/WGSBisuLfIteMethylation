@@ -16,16 +16,21 @@
  	"WGSBisuLfIteMethylation.fastqc.log": "${}",
  	"WGSBisuLfIteMethylation.picard_metrics.log": "${}",
  	"WGSBisuLfIteMethylation.qualimap.log": "${}",
+ 	"WGSBisuLfIteMethylation.mbias.log": "${}",
+ 	"WGSBisuLfIteMethylation.multiqc.log": "${}",
+  	"WGSBisuLfIteMethylation.methylation_metrics.log": "${}",
+ 	"WGSBisuLfIteMethylation.methyl_dackel.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
   	"WGSBisuLfIteMethylation.alignment_dir": "${}",
  	"WGSBisuLfIteMethylation.fastqc_dir": "${}",
+ 	"WGSBisuLfIteMethylation.methylation_dir": "${}",
  
  	"##_COMMENT": "Memory",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
  
  	"##_COMMENT": "Threads",
  	"WGSBisuLfIteMethylation.qualimap.threads": "${}"
- 
+
 
 }
