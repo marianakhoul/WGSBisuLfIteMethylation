@@ -170,14 +170,16 @@ workflow WGSBisuLfIteMethylation {
 	call Fastqc.methylation_metrics {
         	input:
             		bed_graphs = methyl_dackel.methyl_dackel_output,
-			fastqc_dir = fastqc_dir
+			fastqc_dir = fastqc_dir,
+			docker_image = R_docker
     	}
 	
 	call DMR_Calling.bedgraph_to_methylation_ratio {
 		input:
 			methylation_dir = methylation_dir,
 			methyl_dackel_output = methyl_dackel.methyl_dackel_output,
-			sample_name = sample_name
+			sample_name = sample_name,
+			docker_image = R_docker
 	}
 	
 }
