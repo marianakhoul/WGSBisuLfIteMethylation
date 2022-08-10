@@ -218,6 +218,7 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = python_docker,
 			reference_output = camel_index.reference_output,
 			input_bam = mark_duplicates.output_bam,
+			bam_bai = index_bam.indexed_bam,
 			sample_name = sample_name
 	}
 	
