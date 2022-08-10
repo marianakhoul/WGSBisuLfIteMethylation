@@ -51,3 +51,20 @@ task bedgraph_to_methylation_ratio {
     }
 }
 
+task metilene_input {
+    
+    String metilene_dir
+    File bedgraph_to_methylation_ratio
+    String methylation_dir
+    String docker_image
+    
+    command {
+     bedtools unionbedg -filler NA -header -names {g1_header} {g2_header} -i ${methylation_dir}/${bedgraph_to_methylation_ratio} > ${metilene_dir}/${metilene_input}
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File metilene_input = "${metilene_dir}/metilene-input.bedGraph"
+    }
+}
