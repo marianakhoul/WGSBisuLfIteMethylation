@@ -1,9 +1,11 @@
 {	"##_COMMENT": "REFERENCE FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
  	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
+ 	"WGSBisuLfIteMethylation.reference_fasta": "${}",
  	
- 	"##_COMMENT": "R SCRIPT FILES", 
+ 	"##_COMMENT": "SCRIPT FILES", 
  	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
+ 	"WGSBisuLfIteMethylation.camel_modules_path": "${}",
  	
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "${}",
@@ -43,7 +45,5 @@
  	"##_COMMENT": "Dockerfiles",
  	"WGSBisuLfIteMethylation.python_docker": "${}",
  	"WGSBisuLfIteMethylation.MethylDackel_docker": "${}"
- 
-
 
 }
