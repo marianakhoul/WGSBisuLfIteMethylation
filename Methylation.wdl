@@ -78,7 +78,7 @@ workflow WGSBisuLfIteMethylation {
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
 		input:
-			docker_image = bwa_meth_docker,
+			docker_image = bwa_meth_docker_image,
 			ref_fasta = ref_fasta,
 			bwameth_script = bwameth_script
 	}
