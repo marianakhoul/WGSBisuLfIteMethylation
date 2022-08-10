@@ -137,18 +137,18 @@ task multiqc {
     
 }
 
-task methylation_metrics {
+#task methylation_metrics {
     
-    String fastqc_dir
-    File log
+ #   String fastqc_dir
+  #  File log
     
-    command {
-     scripts/methylationMetrics.R
-    }
-    runtime {
-    }
-    output {
-     File methylation_metrics = "${fastqc_dir}/methylation_metrics.csv"
-    }
+   # command {
+    # scripts/methylationMetrics.R
+    #}
+    #runtime {
+    #}
+    #output {
+    # File methylation_metrics = "${fastqc_dir}/methylation_metrics.csv"
+    #}
     
-}
+#}
