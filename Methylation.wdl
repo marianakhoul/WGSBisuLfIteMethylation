@@ -255,4 +255,14 @@ workflow WGSBisuLfIteMethylation {
 			ref_fasta_index = bwameth_indexing.ref_fasta_index
 			
 	}
+	
+	call DMR_Comparison.dmr_coverage {
+		input:
+			input_bam = mark_duplicates.output_bam,
+			bam_bai = index_bam.indexed_bam,
+			docker_image = MethylDackel_docker,
+			dmr_dir = dmr_dir,
+			sample_name = sample_name,
+			input_bed = dmr_combination.bed_output
+	}
 }
