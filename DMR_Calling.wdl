@@ -109,3 +109,24 @@ task camel_index {
      File reference_output = "${reference_fasta}.h5"
     }
 }
+
+task camel_call {
+
+    String camel_modules_path
+    File reference_output
+    File log
+    String camel_dir
+    String sample_name
+    File input_bam
+    String docker_image
+    
+    command {
+     python ${camel_modules_path}/call.py ${input_bam} ${reference_output} ${camel_dir}/${sample_name}.h5 2> ${log}
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File camel_call_output = "${camel_dir}/{sample_name}.h5"
+    }
+}
