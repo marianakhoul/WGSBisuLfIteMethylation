@@ -142,9 +142,10 @@ task methylation_metrics {
     String fastqc_dir
     File log
     File bed_graphs
+    String wg_blimp_R_script_path
     
     command {
-     scripts/methylationMetrics.R
+     Rscript ${wg_blimp_R_script_path}/methylationMetrics.R
     }
     runtime {
     }
