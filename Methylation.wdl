@@ -182,4 +182,9 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = R_docker
 	}
 	
+	call DMR_Calling.metilene_input {
+		input:
+			
+	}
+	
 }
