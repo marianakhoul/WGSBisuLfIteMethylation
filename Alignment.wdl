@@ -44,7 +44,7 @@ task bwameth_align {
 
    Int threads
    File bwameth_script
-   String? docker_image
+   String docker_image
    String alignment_dir
    String sample_name
 
