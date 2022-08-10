@@ -2,6 +2,9 @@
  	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
  	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
  	
+ 	"##_COMMENT": "R SCRIPT FILES", 
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
+ 	
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "${}",
 
