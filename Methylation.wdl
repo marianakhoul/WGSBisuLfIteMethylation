@@ -60,6 +60,7 @@ workflow WGSBisuLfIteMethylation {
 	String camel_dir
 	String bsseq_dir
 	String dmr_dir
+	String segmentation_dir
 
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
@@ -281,6 +282,25 @@ workflow WGSBisuLfIteMethylation {
 			dmr_dir = dmr_dir,
 			coverages = dmr_coverage.regions_output,
 			cgi_annotation_file = cgi_annotation_file,
-			combined_dmrs = dmr_combination.csv_output
+			combined_dmrs = dmr_combination.csv_output,
+			tss_distances = tss_distances,
+			gene_annotation_file = gene_annotation_file,
+			repeat_masker_annotation_file = repeat_masker_annotation_file
+	}
+	
+	call Segmentation.methylseekr {
+		input:
+			segmentation_dir = segmentation_dir,
+			wg_blimp_R_script_path = wg_blimp_R_script_path,
+			docker_image = R_docker,
+			cgi_annotation_file = cgi_annotation_file,
+			gene_annotation_file = gene_annotation_file,
+			repeat_masker_annotation_file = repeat_masker_annotation_file,
+			sample_name = sample_name,
+			methylation_dir = methylation_dir,
+			tss_distances = tss_distances,
+			methylation_table = methyl_dackel.methyl_dackel_output,
+			ref_fasta = ref_fasta
+			
 	}
 }
