@@ -141,6 +141,7 @@ task methylation_metrics {
     
     String fastqc_dir
     File log
+    File bed_graphs
     
     command {
      scripts/methylationMetrics.R
