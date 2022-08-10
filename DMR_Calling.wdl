@@ -100,7 +100,7 @@ task camel_index {
     String reference_fasta
     
     command {
-     python ${camel_modules_path}/index.py ${input.ref} ${reference_fasta}.h5
+     python ${camel_modules_path}/index.py ${ref_fasta} ${reference_fasta}.h5
     }
     runtime {
      docker: docker_image
