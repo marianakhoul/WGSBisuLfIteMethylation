@@ -247,7 +247,7 @@ workflow WGSBisuLfIteMethylation {
 			wg_blimp_R_script_path = wg_blimp_R_script_path
 	}
 	
-	call DMR_Comparison. {
+	call DMR_Comparison.dmr_combination {
 		input:
 			wg_blimp_R_script_path = wg_blimp_R_script_path,
 			docker_image = R_docker,
