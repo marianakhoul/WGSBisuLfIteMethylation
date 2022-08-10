@@ -30,6 +30,7 @@
  	"WGSBisuLfIteMethylation.fastqc_dir": "${}",
  	"WGSBisuLfIteMethylation.methylation_dir": "${}",
   	"WGSBisuLfIteMethylation.mbias_dir": "${}",
+ 	"WGSBisuLfIteMethylation.metilene_dir": "${}",
  
  	"##_COMMENT": "Memory",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
