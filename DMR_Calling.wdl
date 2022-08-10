@@ -30,3 +30,22 @@ task methyl_dackel {
     }
 
 }
+
+task bedgraph_to_methylation_ratio {
+    
+    String methylation_dir
+    File log
+    File methyl_dackel_output
+    String sample_name
+    
+    command {
+     scripts/transformBedGraph.R
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File bedgraph_to_methylation_ratio = "${methylation_dir}/${sample_name}_CpG_ratio.bedGraph"
+    }
+}
+
