@@ -74,7 +74,7 @@
  	"WGSBisuLfIteMethylation.methylseekr.min_cov": 5,
  	"WGSBisuLfIteMethylation.methylseekr.methylation_cutoff": 0.5,
  	"WGSBisuLfIteMethylation.methylseekr.fdr_cutoff": 5,
- 	"#WGSBisuLfIteMethylation.bwa_meth_docker": "String? (optional)",
+ 	"#WGSBisuLfIteMethylation.bwa_meth_docker": "pgcbioinfo/bwa-meth:latest",
 
  	"##_COMMENT": "Dockerfiles",
  	"WGSBisuLfIteMethylation.python_docker": "${}",
