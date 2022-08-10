@@ -194,7 +194,8 @@ workflow WGSBisuLfIteMethylation {
 	
 	call DMR_Calling.metilene {
 		input:
-			metilene_dir = metilene_dir
+			metilene_dir = metilene_dir,
+			metilene_input = metilene_input.metilene_input
 	}
 	
 }
