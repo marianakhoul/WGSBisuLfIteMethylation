@@ -90,3 +90,22 @@ task metilene {
      File metilene_output = "${metilene_dir}/dmrs.csv"
     }
 }
+
+
+task camel_index {
+
+    String docker_image
+    String camel_modules_path
+    File ref_fasta
+    String reference_fasta
+    
+    command {
+     python ${camel_modules_path}/index.py ${input.ref} ${reference_fasta}.h5
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File reference_output = "${reference_fasta}.h5"
+    }
+}
