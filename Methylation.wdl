@@ -50,6 +50,7 @@ workflow WGSBisuLfIteMethylation {
 	String mbias_dir
 	String metilene_dir
 	String camel_dir
+	String bsseq_dir
 
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
@@ -233,5 +234,14 @@ workflow WGSBisuLfIteMethylation {
 			case = case,
 			control = control,
 			camel_dir = camel_dir
+	}
+	
+	call DMR_Calling.bsseq {
+		input:
+			bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio,
+			docker_image = bedtools_docker,
+			methylation_dir = methylation_dir,
+			bsseq_dir = bsseq_dir,
+			wg_blimp_R_script_path = wg_blimp_R_script_path
 	}
 }
