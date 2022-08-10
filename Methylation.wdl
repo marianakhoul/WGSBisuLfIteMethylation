@@ -34,6 +34,12 @@ workflow WGSBisuLfIteMethylation {
 	# Fastq files
 	File fastq_file_1
 	File fastq_file_2
+	
+	# Directories
+	String alignment_dir
+	String fastqc_dir
+	String methylation_dir
+	String mbias_dir
 
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
@@ -64,6 +70,7 @@ workflow WGSBisuLfIteMethylation {
 		input: 
 			input_bam = bwameth_align.output_unsorted_bam,
 			sample_name = sample_name,
+			alignment_dir = alignment_dir,
 			docker_image = gotc_docker
 	}
 	
@@ -87,6 +94,8 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			docker_image = fastqc_docker,
 			sample_name = sample_name,
+			alignment_dir = alignment_dir,
+			fastqc_dir = fastqc_dir,
 			input_bam = mark_duplicates.output_bam
 	}
 	
@@ -100,6 +109,8 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_sa = bwameth_indexing.ref_sa,
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
 			input_bam = mark_duplicates.output_bam,
+			alignment_dir = alignment_dir,
+			fastqc_dir = fastqc_dir,
 			sample_name = sample_name,
 			docker_image = picard_docker
 	}
@@ -108,6 +119,7 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			docker_image = qualimap_docker,
 			sample_name = sample_name,
+			fastqc_dir = fastqc_dir,
 			input_bam = mark_duplicates.output_bam
 	}
 	
@@ -122,6 +134,7 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_pac = bwameth_indexing.ref_pac,
 	  		ref_sa = bwameth_indexing.ref_sa,
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
+			mbias_dir = mbias_dir,
 			docker_image = MethylDackel_docker
 	}
 	
@@ -131,6 +144,7 @@ workflow WGSBisuLfIteMethylation {
 			alnMetrics_input = picard_metrics.alignment,
 			insertMetrics_input = picard_metrics.insert_size,
 			fastqc_input = fastqc.output_html,
+			fastqc_dir = fastqc_dir,
 			qualimap_input = qualimap.qualimap_report
 	}
 	
@@ -145,7 +159,8 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
 			docker_image = MethylDackel_docker,
 			bam_index = index_bam.indexed_bam,
-			bam_file = mark_duplicates.output_bam
+			bam_file = mark_duplicates.output_bam,
+			methylation_dir = methylation_dir
 	}
 	
 	
