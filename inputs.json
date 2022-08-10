@@ -39,8 +39,11 @@
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
  	"WGSBisuLfIteMethylation.qualimap.threads": "${}",
   	"WGSBisuLfIteMethylation.metilene.threads": "${}",
-   	"WGSBisuLfIteMethylation.metilene.min_cpg": "${}",
- 	"WGSBisuLfIteMethylation.metilene.min_diff": "${}",
+   	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
+ 	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
+ 	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
+ 	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
+ 	"WGSBisuLfIteMethylation.metilene.min_cov": 5,
  	
  	"##_COMMENT": "Dockerfiles",
  	"WGSBisuLfIteMethylation.python_docker": "${}",
