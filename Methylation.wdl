@@ -186,7 +186,7 @@ workflow WGSBisuLfIteMethylation {
 	
 	call DMR_Calling.metilene_input {
 		input:
-			bedgraph_to_methylation_ratio = bedgraph_to_methylation_ratio.bedgraph_to_methylation_ratio,
+			bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio,
 			docker_image = bedtools_docker,
 			metilene_dir = metilene_dir,
 			methylation_dir = methylation_dir
