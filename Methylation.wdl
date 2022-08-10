@@ -29,7 +29,7 @@ workflow WGSBisuLfIteMethylation {
 	
 	# Reference Fasta
 	File ref_fasta
-	String 
+	String reference_fasta
 	
 	# Camel path
 	String camel_modules_path
