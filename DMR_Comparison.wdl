@@ -3,3 +3,14 @@
 ##
 ## Task Description
 
+task dmr_combination {
+    
+    String dmr_dir
+    
+    command {
+    }
+    runtime {
+    }
+    output {
+    }
+}
