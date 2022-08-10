@@ -32,13 +32,14 @@ task dmr_coverage {
     String sample_name
     Int annotation_min_mapq
     Int threads
+    String docker_image
     
     command {
-     mosdepth --threads ${threads} --no-per-base --mapq {params.min_mapq} --by ${input_bed} $(dirname {output})/{wildcards.sample} ${input_bam}
+     mosdepth --threads ${threads} --no-per-base --mapq ${annotation_min_mapq} --by ${input_bed} ${dmr_dir}/${sample_name} ${input_bam}
 
     }
     runtime {
-     
+     docker: docker_image
     }
     output {
      File regions_output = "${dmr_dir}/dmr-coverage/${sample_name}.regions.bed.gz"
