@@ -13,10 +13,16 @@ import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/D
 
 workflow WGSBisuLfIteMethylation {
 	
+	# Parameters
 	String wg_blimp_R_script_path
 	String sample_name
 	String case
 	String control
+	Array[String] biotypes
+	File cgi_annotation_file
+	File repeat_masker_annotation_file
+	File gene_annotation_file
+	Array[Int] tss_distances
 	
 	# Docker Images
 	String MethylDackel_docker
@@ -264,5 +270,17 @@ workflow WGSBisuLfIteMethylation {
 			dmr_dir = dmr_dir,
 			sample_name = sample_name,
 			input_bed = dmr_combination.bed_output
+	}
+	
+	call DMR_Comparison.dmr_annotation {
+		input:
+			biotypes = biotypes,
+			wg_blimp_R_script_path = wg_blimp_R_script_path,
+			docker_image = R_docker,
+			dmr_dir = dmr_dir,
+			bam_bai = index_bam.indexed_bam,
+			coverages = dmr_coverage.regions_output
+			cgi_annotation_file = cgi_annotation_file,
+			combined_dmrs = dmr_combination.csv_output
 	}
 }
