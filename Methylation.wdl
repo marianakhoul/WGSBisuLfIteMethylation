@@ -192,4 +192,9 @@ workflow WGSBisuLfIteMethylation {
 			methylation_dir = methylation_dir
 	}
 	
+	call DMR_Calling.metilene {
+		input:
+			metilene_dir = metilene_dir
+	}
+	
 }
