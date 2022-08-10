@@ -37,9 +37,10 @@ task bedgraph_to_methylation_ratio {
     File log
     File methyl_dackel_output
     String sample_name
+    String R_scripts
     
     command {
-     scripts/transformBedGraph.R
+     Rscript ${R_scripts}/transformBedGraph.R
     }
     runtime {
      docker: docker_image
