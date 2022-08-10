@@ -135,6 +135,7 @@ task camel_call {
 task camel_dmr {
 
     File reference_output
+    String camel_modules_path
     String camel_dir
     String docker_image
     File log
