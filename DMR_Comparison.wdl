@@ -8,6 +8,7 @@ task dmr_combination {
     String dmr_dir
     String docker_image
     String wg_blimp_R_script_path
+    File ref_fasta_index
     
     command {
      R ${wg_blimp_R_script_path}/dmrCombination.R
