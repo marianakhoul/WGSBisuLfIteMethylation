@@ -45,3 +45,28 @@ task dmr_coverage {
      File regions_output = "${dmr_dir}/dmr-coverage/${sample_name}.regions.bed.gz"
     }
 }
+
+
+task dmr_annotation {
+    
+    String wg_blimp_R_script_path
+    String docker_image
+    String dmr_dir
+    File coverages
+    File combined_dmrs
+    File biotypes
+    File tss_distances
+    File cgi_annotation_file
+    File gene_annotation_file
+    File repeat_masker_annotation_file
+    
+    command {
+     R ${wg_blimp_R_script_path}/dmrAnnotation.R
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File annotated_dmrs = "${dmr_dir}/annotated-dmrs.csv"
+    }
+}
