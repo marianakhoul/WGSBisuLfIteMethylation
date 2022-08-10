@@ -32,8 +32,10 @@ workflow WGSBisuLfIteMethylation {
 	Array[Int] tss_distances
 	
 	# Docker Images
-	String MethylDackel_docker
-	String python_docker
+	String MethylDackel_docker = "umichbfxcore/methyldackel"
+	String python_docker = "python"
+	String mosdepth_docker = "zlskidmore/mosdepth"
+	String metilene_docker = "quay.io/biocontainers/metilene:0.2.8--h516909a_0"
 	String R_docker = "r-base:latest"
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
@@ -220,7 +222,7 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			metilene_dir = metilene_dir,
 			metilene_input_file = metilene_input.metilene_input_file,
-			docker_image = MethylDackel_docker
+			docker_image = metilene_docker
 	}
 	
 	call DMR_Calling.camel_index {
@@ -274,7 +276,7 @@ workflow WGSBisuLfIteMethylation {
 		input:
 			input_bam = mark_duplicates.output_bam,
 			bam_bai = index_bam.indexed_bam,
-			docker_image = MethylDackel_docker,
+			docker_image = mosdepth_docker,
 			dmr_dir = dmr_dir,
 			sample_name = sample_name,
 			input_bed = dmr_combination.bed_output
