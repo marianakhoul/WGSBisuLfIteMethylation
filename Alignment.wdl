@@ -44,8 +44,7 @@ task bwameth_align {
 
    Int threads
    File bwameth_script
-   String docker_image
-   File log
+   String? docker_image
    String alignment_dir
    String sample_name
 
@@ -53,7 +52,7 @@ task bwameth_align {
     set -o pipefail
     set -e
 
-    ${bwameth_script} -t ${threads} --reference ${ref_fasta} ${fastq_file_1} ${fastq_file_2} 2> ${log} \
+    ${bwameth_script} -t ${threads} --reference ${ref_fasta} ${fastq_file_1} ${fastq_file_2} \
     | \ 
     samtools view -b - > ${alignment_dir}${sample_name}.unsorted.bam 2>/dev/null
   }
