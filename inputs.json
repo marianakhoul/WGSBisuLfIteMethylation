@@ -32,6 +32,7 @@
  	"WGSBisuLfIteMethylation.methylation_dir": "${}",
   	"WGSBisuLfIteMethylation.mbias_dir": "${}",
  	"WGSBisuLfIteMethylation.metilene_dir": "${}",
+ 	"WGSBisuLfIteMethylation.camel_dir": "${}",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
