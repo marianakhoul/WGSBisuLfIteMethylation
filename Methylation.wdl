@@ -16,8 +16,8 @@ workflow WGSBisuLfIteMethylation {
 	String sample_name
 	
 	# Docker Images
-	File MethylDackel_docker
-	File python_docker
+	String MethylDackel_docker
+	String python_docker
 	String R_docker = "r-base:latest"
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
@@ -195,7 +195,8 @@ workflow WGSBisuLfIteMethylation {
 	call DMR_Calling.metilene {
 		input:
 			metilene_dir = metilene_dir,
-			metilene_input = metilene_input.metilene_input
+			metilene_input = metilene_input.metilene_input,
+			docker_image = MethylDackel_docker
 	}
 	
 }
