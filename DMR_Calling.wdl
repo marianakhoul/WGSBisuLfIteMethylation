@@ -20,7 +20,7 @@ task methyl_dackel {
     File log
     
     command {
-     MethylDackel extract --mergeContext -o ${methylation_dir}/${sample_name} ${ref_fasta} ${input_bam}
+     MethylDackel extract --mergeContext -o ${methylation_dir}/${sample_name} ${ref_fasta} ${bam_file}
     }
     runtime {
      docker: docker_image
