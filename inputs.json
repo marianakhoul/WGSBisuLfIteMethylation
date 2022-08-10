@@ -24,6 +24,7 @@
  	"WGSBisuLfIteMethylation.methyl_dackel.log": "${}",
  	"WGSBisuLfIteMethylation.methylation_metrics.log": "${}",
   	"WGSBisuLfIteMethylation.bedgraph_to_methylation_ratio.log": "${}",
+   	"WGSBisuLfIteMethylation.metilene.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
   	"WGSBisuLfIteMethylation.alignment_dir": "${}",
@@ -32,15 +33,17 @@
   	"WGSBisuLfIteMethylation.mbias_dir": "${}",
  	"WGSBisuLfIteMethylation.metilene_dir": "${}",
  
- 	"##_COMMENT": "Memory",
+ 	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
- 
- 	"##_COMMENT": "Threads",
  	"WGSBisuLfIteMethylation.qualimap.threads": "${}",
+  	"WGSBisuLfIteMethylation.metilene.threads": "${}",
+   	"WGSBisuLfIteMethylation.metilene.min_cpg": "${}",
+ 	"WGSBisuLfIteMethylation.metilene.min_diff": "${}",
  	
  	"##_COMMENT": "Dockerfiles",
  	"WGSBisuLfIteMethylation.python_docker": "${}",
  	"WGSBisuLfIteMethylation.MethylDackel_docker": "${}"
+ 
 
 
 }
