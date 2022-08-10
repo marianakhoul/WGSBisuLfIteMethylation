@@ -8,6 +8,7 @@
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Fastqc.wdl" as Fastqc
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/DMR_Calling.wdl" as DMR_Calling
+import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/DMR_Comparison.wdl" as DMR_Comparison
 
 
 workflow WGSBisuLfIteMethylation {
