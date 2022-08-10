@@ -1,7 +1,6 @@
-{	"##_COMMENT": "REFERENCE FILES", 
+{	"##_COMMENT": "FASTQ FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
  	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
- 	"WGSBisuLfIteMethylation.reference_fasta": "${}",
  	
  	"##_COMMENT": "SCRIPT FILES", 
  	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
@@ -9,6 +8,7 @@
  	
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "${}",
+  	"WGSBisuLfIteMethylation.reference_fasta": "${}",
 
   	"##_COMMENT": "PYTHON FILES",
   	"WGSBisuLfIteMethylation.bwameth_script": "./bwameth.py",
