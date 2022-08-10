@@ -18,6 +18,8 @@ task methylseekr {
     Int min_cov
     File methylation_table
     File ref_fasta
+    Int fdr_cutoff
+    Float methylation_cutoff
     
     command {
       R ${wg_blimp_R_script_path}/methylseekRSegmentation.R
