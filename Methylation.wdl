@@ -25,6 +25,7 @@ workflow WGSBisuLfIteMethylation {
 	String qualimap_docker = "pegi3s/qualimap"
 	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
 	String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
+	String bedtools_docker = "biocontainers/bedtools"
 	
 	# Reference Fasta
 	File ref_fasta
@@ -184,7 +185,10 @@ workflow WGSBisuLfIteMethylation {
 	
 	call DMR_Calling.metilene_input {
 		input:
-			
+			bedgraph_to_methylation_ratio = bedgraph_to_methylation_ratio.bedgraph_to_methylation_ratio,
+			docker_image = bedtools_docker,
+			metilene_dir = metilene_dir,
+			methylation_dir = methylation_dir
 	}
 	
 }
