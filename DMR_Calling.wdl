@@ -141,11 +141,13 @@ task camel_dmr {
     Float min_diff
     Int min_cpg
     Int min_cov
+    String case
+    String control
     
     command {
      python ${camel_modules_path}/dmr.py ${reference_output} \
-     --case {input.case} \
-     --control {input.control} \
+     --case ${case} \
+     --control ${control} \
      --min_diff ${min_diff} \
      --min_cpg ${min_cpg} \
      --min_cov ${min_cov} > ${camel_dir}/dmrs.csv 2> ${log}
