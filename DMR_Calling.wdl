@@ -47,7 +47,7 @@ task bedgraph_to_methylation_ratio {
      docker: docker_image
     }
     output {
-     File bedgraph_to_methylation_ratio = "${methylation_dir}/${sample_name}_CpG_ratio.bedGraph"
+     File bedgraph_ratio = "${methylation_dir}/${sample_name}_CpG_ratio.bedGraph"
     }
 }
 
