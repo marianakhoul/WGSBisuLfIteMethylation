@@ -131,3 +131,30 @@ task camel_call {
      File camel_call_output = "${camel_dir}/{sample_name}.h5"
     }
 }
+
+task camel_dmr {
+
+    File reference_output
+    String camel_dir
+    String docker_image
+    File log
+    String min_diff
+    String min_cpg
+    String min_cov
+    
+    command {
+     python ${camel_modules_path}/dmr.py ${reference_output} \
+     --case {input.case} \
+     --control {input.control} \
+     --min_diff ${min_diff} \
+     --min_cpg ${min_cpg} \
+     --min_cov ${min_cov} > ${camel_dir}/dmrs.csv 2> ${log}
+    }
+    runtime {
+     docker: docker_image
+    }
+    output {
+     File camel_call_output = "${camel_dir}/dmrs.csv"
+    }
+
+}
