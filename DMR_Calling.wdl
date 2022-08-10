@@ -118,6 +118,7 @@ task camel_call {
     String camel_dir
     String sample_name
     File input_bam
+    File bam_bai
     String docker_image
     
     command {
