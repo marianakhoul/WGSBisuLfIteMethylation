@@ -136,3 +136,7 @@ task multiqc {
     }
     
 }
+
+task methylation_metrics {
+    
+}
