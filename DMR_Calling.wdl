@@ -5,6 +5,8 @@
 
 task methyl_dackel {
     
+    String docker_image
+    String sample_name
     File ref_amb
     File ref_ann
     File ref_bwt
@@ -12,10 +14,10 @@ task methyl_dackel {
     File ref_sa
     File ref_fasta_index
     File ref_fasta
-    File input_bam
-    String sample_name
+    File bam_index
+    File bam_file
     String methylation_dir
-    
+    File log
     
     command {
      MethylDackel extract --mergeContext -o ${methylation_dir}/${sample_name} ${ref_fasta} ${input_bam}
