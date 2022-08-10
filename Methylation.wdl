@@ -132,4 +132,9 @@ workflow WGSBisuLfIteMethylation {
 			qualimap_input = qualimap.qualimap_report
 	}
 	
+	call Fastqc.methylation_metrics {
+		input:
+			
+	}
+	
 }
