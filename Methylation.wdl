@@ -163,5 +163,10 @@ workflow WGSBisuLfIteMethylation {
 			methylation_dir = methylation_dir
 	}
 	
+	call Fastqc.methylation_metrics {
+        	input:
+            		bed_graphs = methyl_dackel.methyl_dackel_output,
+			methylation_dir = methylation_dir
+    }
 	
 }
