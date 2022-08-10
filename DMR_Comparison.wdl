@@ -54,8 +54,8 @@ task dmr_annotation {
     String dmr_dir
     File coverages
     File combined_dmrs
-    File biotypes
-    File tss_distances
+    Array[String] biotypes
+    Array[Int] tss_distances
     File cgi_annotation_file
     File gene_annotation_file
     File repeat_masker_annotation_file
