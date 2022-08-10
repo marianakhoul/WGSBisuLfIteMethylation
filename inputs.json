@@ -19,6 +19,8 @@
  	"WGSBisuLfIteMethylation.mbias.log": "${}",
  	"WGSBisuLfIteMethylation.multiqc.log": "${}",
  	"WGSBisuLfIteMethylation.methyl_dackel.log": "${}",
+ 	"WGSBisuLfIteMethylation.methylation_metrics.log": "${}",
+  	"WGSBisuLfIteMethylation.bedgraph_to_methylation_ratio.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
   	"WGSBisuLfIteMethylation.alignment_dir": "${}",
