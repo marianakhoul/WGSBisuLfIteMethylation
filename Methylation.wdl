@@ -308,7 +308,9 @@ workflow WGSBisuLfIteMethylation {
 			methylation_dir = methylation_dir,
 			tss_distances = tss_distances,
 			methylation_table = methyl_dackel.methyl_dackel_output,
-			ref_fasta = ref_fasta
+			ref_fasta = ref_fasta,
+			fdr_cutoff = fdr_cutoff,
+			methylation_cutoff = methylation_cutoff
 			
 	}
 }
