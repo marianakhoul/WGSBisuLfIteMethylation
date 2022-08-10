@@ -74,8 +74,8 @@ task metilene {
 
     String metilene_dir
     File log
-    String min_cpg
-    String min_diff
+    Int min_cpg
+    Float min_diff
     String threads
     File metilene_input_file
     String docker_image
@@ -138,9 +138,9 @@ task camel_dmr {
     String camel_dir
     String docker_image
     File log
-    String min_diff
-    String min_cpg
-    String min_cov
+    Float min_diff
+    Int min_cpg
+    Int min_cov
     
     command {
      python ${camel_modules_path}/dmr.py ${reference_output} \
