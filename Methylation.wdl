@@ -7,6 +7,7 @@
 
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Alignment.wdl" as Alignment
 import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/Fastqc.wdl" as Fastqc
+import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/DMR_Calling.wdl" as DMR_Calling
 
 
 workflow WGSBisuLfIteMethylation {
@@ -132,9 +133,12 @@ workflow WGSBisuLfIteMethylation {
 			qualimap_input = qualimap.qualimap_report
 	}
 	
-	call Fastqc.methylation_metrics {
+	call DMR_Calling.methyl_dackel {
 		input:
-			
+	}
+	
+	call Fastqc.methylation_metrics {
+		input:		
 	}
 	
 }
