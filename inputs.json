@@ -1,6 +1,8 @@
 {	"##_COMMENT": "FASTQ FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
  	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
+ 	"WGSBisuLfIteMethylation.case": "${}",
+ 	"WGSBisuLfIteMethylation.control": "${}",
  	
  	"##_COMMENT": "SCRIPT FILES", 
  	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
