@@ -65,7 +65,7 @@ task metilene_input {
      docker: docker_image
     }
     output {
-     File metilene_input = "${metilene_dir}/metilene-input.bedGraph"
+     File metilene_input_file = "${metilene_dir}/metilene-input.bedGraph"
     }
 }
 
@@ -77,11 +77,11 @@ task metilene {
     String min_cpg
     String min_diff
     String threads
-    File metilene_input
+    File metilene_input_file
     String docker_image
     
     command {
-     metilene -m ${min_cpg} -d ${min_diff} -t ${threads} ${metilene_dir}/${metilene_input} > ${metilene_dir}/dmrs.csv 2> ${log}
+     metilene -m ${min_cpg} -d ${min_diff} -t ${threads} ${metilene_dir}/${metilene_input_file} > ${metilene_dir}/dmrs.csv 2> ${log}
     }
     runtime {
      docker: docker_image
