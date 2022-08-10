@@ -147,8 +147,9 @@ workflow WGSBisuLfIteMethylation {
 			bam_file = mark_duplicates.output_bam
 	}
 	
-	#call Fastqc.methylation_metrics {
-	#	input:		
-	#}
+	call Fastqc.methylation_metrics {
+		input:
+			bed_graphs = methyl_dackel.methyl_dackel_output
+	}
 	
 }
