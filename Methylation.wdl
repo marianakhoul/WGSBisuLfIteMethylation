@@ -135,6 +135,7 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_sa = bwameth_indexing.ref_sa,
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
 			mbias_dir = mbias_dir,
+			sample_name = sample_name,
 			docker_image = MethylDackel_docker
 	}
 	
@@ -145,6 +146,7 @@ workflow WGSBisuLfIteMethylation {
 			insertMetrics_input = picard_metrics.insert_size,
 			fastqc_input = fastqc.output_html,
 			fastqc_dir = fastqc_dir,
+			sample_name = sample_name,
 			qualimap_input = qualimap.qualimap_report
 	}
 	
@@ -160,6 +162,7 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = MethylDackel_docker,
 			bam_index = index_bam.indexed_bam,
 			bam_file = mark_duplicates.output_bam,
+			sample_name = sample_name,
 			methylation_dir = methylation_dir
 	}
 	
@@ -167,6 +170,13 @@ workflow WGSBisuLfIteMethylation {
         	input:
             		bed_graphs = methyl_dackel.methyl_dackel_output,
 			fastqc_dir = fastqc_dir
-    }
+    	}
+	
+	call DMR_Calling.bedgraph_to_methylation_ratio {
+		input:
+			methylation_dir = methylation_dir,
+			methyl_dackel_output = methyl_dackel.methyl_dackel_output,
+			sample_name = sample_name
+	}
 	
 }
