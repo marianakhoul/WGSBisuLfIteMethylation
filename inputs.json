@@ -25,6 +25,7 @@
  	"WGSBisuLfIteMethylation.methylation_metrics.log": "${}",
   	"WGSBisuLfIteMethylation.bedgraph_to_methylation_ratio.log": "${}",
    	"WGSBisuLfIteMethylation.metilene.log": "${}",
+ 	"WGSBisuLfIteMethylation.camel_call.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
   	"WGSBisuLfIteMethylation.alignment_dir": "${}",
