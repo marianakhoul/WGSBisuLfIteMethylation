@@ -59,7 +59,7 @@ task metilene_input {
     String docker_image
     
     command {
-     bedtools unionbedg -filler NA -i ${methylation_dir}/${bedgraph_to_methylation_ratio} > ${metilene_dir}/metilene-input.bedGraph
+     bedtools unionbedg -filler NA -i ${methylation_dir}/${bedgraph_ratio} > ${metilene_dir}/metilene-input.bedGraph
     }
     runtime {
      docker: docker_image
