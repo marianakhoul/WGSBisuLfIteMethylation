@@ -30,7 +30,11 @@
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
  
  	"##_COMMENT": "Threads",
- 	"WGSBisuLfIteMethylation.qualimap.threads": "${}"
+ 	"WGSBisuLfIteMethylation.qualimap.threads": "${}",
+ 	
+ 	"##_COMMENT": "Dockerfiles",
+ 	"WGSBisuLfIteMethylation.python_docker": "${}",
+ 	"WGSBisuLfIteMethylation.MethylDackel_docker": "${}",
 
 
 }
