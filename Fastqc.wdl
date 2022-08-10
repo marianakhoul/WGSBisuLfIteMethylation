@@ -101,7 +101,7 @@ task mbias {
     File log
     
     command {
-     MethylDackel mbias ${ref_fasta} ${bam_file} ${mbias_dir}/{sample_name} &> ${log}
+     MethylDackel mbias ${ref_fasta} ${bam_file} ${mbias_dir}/${sample_name} &> ${log}
     }
     runtime {
      docker: docker_image
