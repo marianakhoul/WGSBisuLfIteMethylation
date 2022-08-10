@@ -6,7 +6,7 @@
 task methylseekr {
 
     String wg_blimp_R_script_path
-    string docker_image
+    String docker_image
     String sample_name
     File cgi_annotation_file
     File gene_annotation_file
