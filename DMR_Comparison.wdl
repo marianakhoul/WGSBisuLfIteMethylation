@@ -6,11 +6,17 @@
 task dmr_combination {
     
     String dmr_dir
+    String docker_image
+    String wg_blimp_R_script_path
     
     command {
+     R ${wg_blimp_R_script_path}/dmrCombination.R
     }
     runtime {
+     docker: docker_image
     }
     output {
+     File bed_output = "${dmr_dir}/combined-dmrs.csv"
+     File csv_output = "${dmr_dir}/dmr-coverage/combined-dmrs.bed"
     }
 }
