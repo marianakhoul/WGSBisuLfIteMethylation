@@ -18,7 +18,6 @@
  	"WGSBisuLfIteMethylation.qualimap.log": "${}",
  	"WGSBisuLfIteMethylation.mbias.log": "${}",
  	"WGSBisuLfIteMethylation.multiqc.log": "${}",
-  	"WGSBisuLfIteMethylation.methylation_metrics.log": "${}",
  	"WGSBisuLfIteMethylation.methyl_dackel.log": "${}",
 
   	"##_COMMENT": "OUTPUT DIRECTORIES",
