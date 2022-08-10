@@ -12,12 +12,13 @@ import "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/D
 
 workflow WGSBisuLfIteMethylation {
 	
-	String wg_blimp_R_script_path = "./scripts"
+	String wg_blimp_R_script_path
 	String sample_name
 	
 	# Docker Images
 	File MethylDackel_docker
 	File python_docker
+	String R_docker = "r-base:latest"
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
 	String picard_docker = "broadinstitute/picard"
