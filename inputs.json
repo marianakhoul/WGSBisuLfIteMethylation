@@ -38,6 +38,7 @@
  	"WGSBisuLfIteMethylation.camel_dir": "${}",
  	"WGSBisuLfIteMethylation.bsseq_dir": "${}",
  	"WGSBisuLfIteMethylation.dmr_dir": "${}",
+ 	"WGSBisuLfIteMethylation.segmentation_dir": "${}",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
