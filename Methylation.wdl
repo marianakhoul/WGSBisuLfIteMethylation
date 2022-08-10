@@ -29,6 +29,10 @@ workflow WGSBisuLfIteMethylation {
 	
 	# Reference Fasta
 	File ref_fasta
+	String 
+	
+	# Camel path
+	String camel_modules_path
 
 	# BWA Script
 	File bwameth_script
@@ -197,6 +201,14 @@ workflow WGSBisuLfIteMethylation {
 			metilene_dir = metilene_dir,
 			metilene_input_file = metilene_input.metilene_input_file,
 			docker_image = MethylDackel_docker
+	}
+	
+	call DMR_Calling.camel_index{
+		input:
+			camel_modules_path = camel_modules_path,
+			docker_image = python_docker,
+			ref_fasta = ref_fasta,
+			reference_fasta = reference_fasta
 	}
 	
 }
