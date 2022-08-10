@@ -77,7 +77,8 @@ task metilene {
     String min_cpg
     String min_diff
     String threads
-    File metilene_input 
+    File metilene_input
+    String docker_image
     
     command {
      metilene -m ${min_cpg} -d ${min_diff} -t ${threads} ${metilene_dir}/${metilene_input} > ${metilene_dir}/dmrs.csv 2> ${log}
