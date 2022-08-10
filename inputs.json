@@ -36,6 +36,7 @@
   	"WGSBisuLfIteMethylation.mbias_dir": "${}",
  	"WGSBisuLfIteMethylation.metilene_dir": "${}",
  	"WGSBisuLfIteMethylation.camel_dir": "${}",
+ 	"WGSBisuLfIteMethylation.bsseq_dir": "${}",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": "${}",
@@ -46,6 +47,7 @@
  	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
  	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
  	"WGSBisuLfIteMethylation.metilene.min_cov": 5,
+ 	"WGSBisuLfIteMethylation.bsseq.io_threads": 8,
  	
  	"##_COMMENT": "Dockerfiles",
  	"WGSBisuLfIteMethylation.python_docker": "${}",
