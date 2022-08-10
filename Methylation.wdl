@@ -279,7 +279,7 @@ workflow WGSBisuLfIteMethylation {
 			docker_image = R_docker,
 			dmr_dir = dmr_dir,
 			bam_bai = index_bam.indexed_bam,
-			coverages = dmr_coverage.regions_output
+			coverages = dmr_coverage.regions_output,
 			cgi_annotation_file = cgi_annotation_file,
 			combined_dmrs = dmr_combination.csv_output
 	}
