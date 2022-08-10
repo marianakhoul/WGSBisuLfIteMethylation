@@ -14,8 +14,6 @@
   	"WGSBisuLfIteMethylation.reference_fasta": "${}",
 
   	"##_COMMENT": "LOG FILES",
-  	"WGSBisuLfIteMethylation.bwameth_indexing.log": "${}",
-  	"WGSBisuLfIteMethylation.bwameth_align.log": "${}",
   	"WGSBisuLfIteMethylation.sort_bam.log": "${}",
   	"WGSBisuLfIteMethylation.mark_duplicates.log": "${}",
  	"WGSBisuLfIteMethylation.fastqc.log": "${}",
