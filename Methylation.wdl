@@ -13,7 +13,9 @@ workflow WGSBisuLfIteMethylation {
 	
 	String wg_blimp_R_script_path = "./scripts"
 	String sample_name
-
+	
+	# Docker Images
+	File MethylDackel_docker
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
 	String picard_docker = "broadinstitute/picard"
@@ -118,6 +120,7 @@ workflow WGSBisuLfIteMethylation {
 	  		ref_pac = bwameth_indexing.ref_pac,
 	  		ref_sa = bwameth_indexing.ref_sa,
 	  		ref_fasta_index = bwameth_indexing.ref_fasta_index,
+			docker_image = MethylDackel_docker
 	}
 	
 	call Fastqc.multiqc {
