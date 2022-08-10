@@ -30,6 +30,8 @@ workflow WGSBisuLfIteMethylation {
 	File repeat_masker_annotation_file
 	File gene_annotation_file
 	Array[Int] tss_distances
+	Int fdr_cutoff
+	Float methylation_cutoff
 	
 	# Docker Images
 	String MethylDackel_docker = "umichbfxcore/methyldackel"
