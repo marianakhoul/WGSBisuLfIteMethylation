@@ -14,6 +14,8 @@ workflow WGSBisuLfIteMethylation {
 	
 	String wg_blimp_R_script_path
 	String sample_name
+	String case
+	Strong control
 	
 	# Docker Images
 	String MethylDackel_docker
