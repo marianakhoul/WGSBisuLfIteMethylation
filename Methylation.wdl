@@ -42,6 +42,7 @@ workflow WGSBisuLfIteMethylation {
 	String fastqc_dir
 	String methylation_dir
 	String mbias_dir
+	String metilene_dir
 
 	## ALIGNMENT
 	call Alignment.bwameth_indexing {
