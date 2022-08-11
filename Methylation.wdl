@@ -42,11 +42,8 @@ workflow WGSBisuLfIteMethylation {
 	String multiqc_docker = "ewels/multiqc"
 	String fastqc_docker = "pegi3s/fastqc"
 	String picard_docker = "broadinstitute/picard"
-	String qualimap_docker = "pegi3s/qualimap"
-	
-	String? bwa_meth_docker
-	String bwa_meth_docker_image = select_first([bwa_meth_docker, "pgcbioinfo/bwa-meth:latest"])
-	
+	String qualimap_docker = "pegi3s/qualimap"	
+	String bwa_meth_docker = "pgcbioinfo/bwa-meth:latest"
 	String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
 	String bedtools_docker = "biocontainers/bedtools"
 	
