@@ -8,7 +8,7 @@ task bwameth_indexing {
    File ref_fasta
    String docker_image
    File bwameth_script
-   File log
+   String log
    String ref_fasta_name = basename(ref_fasta,".fa")
 
   
@@ -41,11 +41,13 @@ task bwameth_align {
 
    File fastq_file_1
    File fastq_file_2
-
+   
+   String log
    Int threads
    File bwameth_script
    String alignment_dir
    String sample_name
+   String docker_image
 
    command {
     set -o pipefail
@@ -56,7 +58,7 @@ task bwameth_align {
     samtools view -b - > ${alignment_dir}${sample_name}.unsorted.bam 2>/dev/null
   }
   runtime {
-    docker: "pgcbioinfo/bwa-meth:latest"
+    docker: docker_image
   }
   output{
     File output_unsorted_bam = "${alignment_dir}${sample_name}.unsorted.bam"
