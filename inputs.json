@@ -15,7 +15,7 @@
  	"WGSBisuLfIteMethylation.qualimap.memory": 5,
  	"WGSBisuLfIteMethylation.picard_metrics.max_memory": 5,
  	"WGSBisuLfIteMethylation.mark_duplicates.max_memory": 5,
- 	"WGSBisuLfIteMethylation.bwameth_align.threads": 10,
+ 	"WGSBisuLfIteMethylation.Alignment.bwameth_align.threads": 10,
  	"WGSBisuLfIteMethylation.qualimap.threads": 10,
   	"WGSBisuLfIteMethylation.metilene.threads": 10,
  	"WGSBisuLfIteMethylation.sort_bam.threads": 10,
