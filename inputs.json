@@ -6,7 +6,6 @@
  	
  	"##_COMMENT": "SCRIPT FILES", 
  	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
- 	"WGSBisuLfIteMethylation.camel_modules_path": "${}",
    	"WGSBisuLfIteMethylation.bwameth_script": "./bwameth.py",
  	
 	"##_COMMENT": "REFERENCE FILES", 
