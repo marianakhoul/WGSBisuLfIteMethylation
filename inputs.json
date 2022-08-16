@@ -1,21 +1,19 @@
 {	"##_COMMENT": "FASTQ FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq.gz",
  	"WGSBisuLfIteMethylation.fastq_file_2": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq.gz",
- 	"WGSBisuLfIteMethylation.case": "${}",
- 	"WGSBisuLfIteMethylation.control": "${}",
  	
  	"##_COMMENT": "SCRIPT FILES", 
- 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "${}",
-   	"WGSBisuLfIteMethylation.bwameth_script": "./bwameth.py",
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "DFCI_Demo_Methylation:scripts/",
+   	"WGSBisuLfIteMethylation.bwameth_script": "DFCI_Demo_Methylation:scripts/bwameth.py",
  	
 	"##_COMMENT": "REFERENCE FILES", 
-  	"WGSBisuLfIteMethylation.ref_fasta": "${}",
-  	"WGSBisuLfIteMethylation.reference_fasta": "${}",
+  	"WGSBisuLfIteMethylation.ref_fasta": "DFCI_Demo_Methylation:resources/hg38/hg38.fa",
+  	"WGSBisuLfIteMethylation.reference_fasta": "DFCI_Demo_Methylation:resources/hg38/hg38.fa.fai",
  
  	"##_COMMENT": "Parameters",
- 	"WGSBisuLfIteMethylation.qualimap.memory": "${5}",
- 	"WGSBisuLfIteMethylation.qualimap.threads": "${10}",
-  	"WGSBisuLfIteMethylation.metilene.threads": "${10}",
+ 	"WGSBisuLfIteMethylation.qualimap.memory": 5,
+ 	"WGSBisuLfIteMethylation.qualimap.threads": 10,
+  	"WGSBisuLfIteMethylation.metilene.threads": 10,
    	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
  	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
  	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
@@ -36,19 +34,15 @@
   	"bidirectional_promoter_lncRNA",
   	"miRNA"
 	],
-	"WGSBisuLfIteMethylation.cgi_annotation_file": "${}",
-	"WGSBisuLfIteMethylation.gene_annotation_file": "${}",
-	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "${}",
+	"WGSBisuLfIteMethylation.cgi_annotation_file": "DFCI_Demo_Methylation:Annotation Files/cgi-locations-hg38.csv.gz",
+	"WGSBisuLfIteMethylation.gene_annotation_file": "DFCI_Demo_Methylation:Annotation Files/gencode.v34.annotation.gtf",
+	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "DFCI_Demo_Methylation:Annotation Files/repeat-masker-hg38.csv",
 	"WGSBisuLfIteMethylation.tss_distances": [
   	-1000,
   	1000
 	],
  	"WGSBisuLfIteMethylation.methylseekr.min_cov": 5,
  	"WGSBisuLfIteMethylation.methylseekr.methylation_cutoff": 0.5,
- 	"WGSBisuLfIteMethylation.methylseekr.fdr_cutoff": 5,
-
- 	"##_COMMENT": "Dockerfiles",
- 	"WGSBisuLfIteMethylation.python_docker": "${}",
- 	"WGSBisuLfIteMethylation.MethylDackel_docker": "${}"
+ 	"WGSBisuLfIteMethylation.methylseekr.fdr_cutoff": 5
 
 }
