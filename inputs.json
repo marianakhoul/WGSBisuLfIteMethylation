@@ -13,8 +13,12 @@
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": 5,
+ 	"WGSBisuLfIteMethylation.picard_metrics.max_memory": 5,
+ 	"WGSBisuLfIteMethylation.mark_duplicates.max_memory": 5,
+ 	"WGSBisuLfIteMethylation.bwameth_align.threads": 10,
  	"WGSBisuLfIteMethylation.qualimap.threads": 10,
   	"WGSBisuLfIteMethylation.metilene.threads": 10,
+ 	"WGSBisuLfIteMethylation.sort_bam.threads": 10,
    	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
  	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
  	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
