@@ -1,6 +1,6 @@
 {	"##_COMMENT": "FASTQ FILES", 
- 	"WGSBisuLfIteMethylation.fastq_file_1": "${}",
- 	"WGSBisuLfIteMethylation.fastq_file_2": "${}",
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq.gz",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq.gz",
  	"WGSBisuLfIteMethylation.case": "${}",
  	"WGSBisuLfIteMethylation.control": "${}",
  	
