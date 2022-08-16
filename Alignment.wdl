@@ -41,7 +41,6 @@ task bwameth_align {
    File fastq_file_1
    File fastq_file_2
    
-   String log
    Int threads
    File bwameth_script
 
@@ -69,7 +68,6 @@ task sort_bam {
    File input_bam
    Int threads
    String sample_name
-   File log
 
    String docker_image
   
@@ -88,7 +86,6 @@ task mark_duplicates {
 
       String sample_name
       File input_bam
-      File log
    
       String tmp_dir
       Float max_memory
