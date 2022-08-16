@@ -1,6 +1,7 @@
 {	"##_COMMENT": "FASTQ FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq.gz",
  	"WGSBisuLfIteMethylation.fastq_file_2": "DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq.gz",
+ 	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
  	
  	"##_COMMENT": "SCRIPT FILES", 
  	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "DFCI_Demo_Methylation:scripts/",
