@@ -86,8 +86,6 @@ task mark_duplicates {
 
       String sample_name
       File input_bam
-   
-      String tmp_dir
       Float max_memory
       String docker_image
 
@@ -96,8 +94,7 @@ task mark_duplicates {
       MarkDuplicates \
       -I ${input_bam} \
       -O ${sample_name}.bam \
-      -M ${sample_name}-dup-metrics.txt \
-      -TMP_DIR ${tmp_dir}
+      -M ${sample_name}-dup-metrics.txt 
      }
      runtime {
       docker: docker_image
