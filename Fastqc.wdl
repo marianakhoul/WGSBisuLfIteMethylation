@@ -8,18 +8,16 @@ task fastqc {
      String docker_image
      String sample_name
      File input_bam
-     String alignment_dir
-     String fastqc_dir
-     File log
+
      
      command <<<
-      fastqc -o ~{fastqc_dir}/fastqc ~{alignment_dir}~{input_bam} &> ~{log}
+      fastqc ~{input_bam}
      >>>
      runtime{
       docker: docker_image
      }
      output{
-      File output_html = "${fastqc_dir}/fastqc/${sample_name}_fastqc.html"
+      File output_html = "${sample_name}_fastqc.html"
      }
 }
 
@@ -28,9 +26,7 @@ task picard_metrics {
     String docker_image
     String sample_name
     File input_bam
-    String alignment_dir
-    String fastqc_dir
-    File log
+
     File ref_amb
     File ref_ann
     File ref_bwt
@@ -44,22 +40,22 @@ task picard_metrics {
     
      picard -Xmx{max_memory}G CollectAlignmentSummaryMetrics \
      -R ~{ref_fasta} \
-     -I ~{alignment_dir}~{input_bam} \
-     -O ~{fastqc_dir}/picard-metrics/~{sample_name}-alignment.txt &> ~{log}
+     -I ~{input_bam} \
+     -O ~{sample_name}-alignment.txt
      
      picard -Xmx{max_memory}G CollectInsertSizeMetrics \
-     -I ~{alignment_dir}~{input_bam} \
-     -O ~{fastqc_dir}/picard-metrics/~{sample_name}-insert-size.txt \
-     -H ~{fastqc_dir}/picard-metrics/~{sample_name}-hist.pdf  &> ~{log}
+     -I ~{input_bam} \
+     -O ~{sample_name}-insert-size.txt \
+     -H ~{sample_name}-hist.pdf 
      
     >>>
     runtime {
      docker: docker_image
     }
     output {
-     File alignment   = "${fastqc_dir}/picard-metrics/${sample_name}-alignment.txt"
-     File insert_size = "${fastqc_dir}/picard-metrics/${sample_name}-insert-size.txt"
-     File hist        = "${fastqc_dir}/picard-metrics/${sample_name}-hist.pdf"
+     File alignment   = "${sample_name}-alignment.txt"
+     File insert_size = "${sample_name}-insert-size.txt"
+     File hist        = "${sample_name}-hist.pdf"
     }
 }
 
@@ -67,21 +63,20 @@ task picard_metrics {
 task qualimap {
     
     String docker_image
-    String sample_name
     File input_bam
-    String fastqc_dir
-    File log
+
+
     String memory
     String threads
     
     command {
-      qualimap bamqc -bam ${input_bam} -outdir ${fastqc_dir}/qualimap -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G &> ${log}
+      qualimap bamqc -bam ${input_bam} -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G
     }
     runtime {
      docker: docker_image
     }
     output {
-     File qualimap_report = "${fastqc_dir}/qualimap/${sample_name}/qualimapReport.html"
+     File qualimap_report = "qualimapReport.html"
     }
 }
 task mbias {
@@ -97,18 +92,17 @@ task mbias {
     File ref_fasta
     File bam_index
     File bam_file
-    String mbias_dir
-    File log
+
     
     command {
-     MethylDackel mbias ${ref_fasta} ${bam_file} ${mbias_dir}/${sample_name} &> ${log}
+     MethylDackel mbias ${ref_fasta} ${bam_file}
     }
     runtime {
      docker: docker_image
     }
     output {
-     File mbias_ot = "${mbias_dir}/${sample_name}_OT.svg"
-     File mbias_ob = "${mbias_dir}/${sample_name}_OB.svg"
+     File mbias_ot = "${sample_name}_OT.svg"
+     File mbias_ob = "${sample_name}_OB.svg"
     }
     
 }
@@ -121,11 +115,10 @@ task multiqc {
     File insertMetrics_input
     File fastqc_input
     File qualimap_input
-    String fastqc_dir
-    File log
+
     
     command {
-     multiqc -f -o ${fastqc_dir} ${fastqc_dir}/fastqc ${fastqc_dir}/picard-metrics ${fastqc_dir}/qualimap &> ${log} 
+     multiqc -f -o ${fastqc_dir} ${fastqc_dir}/fastqc ${fastqc_dir}/picard-metrics ${fastqc_dir}/qualimap
 
     }
     runtime {
@@ -139,9 +132,8 @@ task multiqc {
 
 task methylation_metrics {
     
-    String fastqc_dir
+
     String docker_image
-    File log
     File bed_graphs
     String wg_blimp_R_script_path
     
@@ -152,7 +144,7 @@ task methylation_metrics {
      docker: docker_image
     }
     output {
-     File methylation_metrics = "${fastqc_dir}/methylation_metrics.csv"
+     File methylation_metrics = "methylation_metrics.csv"
     }
     
 }
