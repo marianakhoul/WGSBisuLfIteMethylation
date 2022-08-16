@@ -13,8 +13,8 @@ task bwameth_indexing {
 
   
    command <<<
-    ~{bwameth_script} index ~{ref_fasta} 2> ~{log}
-    samtools faidx ~{ref_fasta} 2> ~{log}
+    ~{bwameth_script} index ~{ref_fasta}
+    samtools faidx ~{ref_fasta}
    >>>
    runtime {
     docker: docker_image
@@ -45,7 +45,7 @@ task bwameth_align {
    String log
    Int threads
    File bwameth_script
-   String alignment_dir
+
    String sample_name
    String docker_image
 
@@ -55,13 +55,13 @@ task bwameth_align {
 
     ${bwameth_script} -t ${threads} --reference ${ref_fasta} ${fastq_file_1} ${fastq_file_2} \
     | \ 
-    samtools view -b - > ${alignment_dir}${sample_name}.unsorted.bam 2>/dev/null
+    samtools view -b - > ${sample_name}.unsorted.bam 2>/dev/null
   }
   runtime {
     docker: docker_image
   }
   output{
-    File output_unsorted_bam = "${alignment_dir}${sample_name}.unsorted.bam"
+    File output_unsorted_bam = "${sample_name}.unsorted.bam"
   }
 }
 
@@ -71,17 +71,17 @@ task sort_bam {
    Int threads
    String sample_name
    File log
-   String alignment_dir
+
    String docker_image
   
    command <<<
-    samtools sort -o ${alignment_dir}${sample_name}.sorted.bam -@ ${threads} ${input_bam} 2> {$log}
+    samtools sort -o ${sample_name}.sorted.bam -@ ${threads} ${input_bam}
    >>>
    runtime {
     docker: docker_image
   }
    output{
-    File output_sorted_bam = "${alignment_dir}${sample_name}.sorted.bam"
+    File output_sorted_bam = "${sample_name}.sorted.bam"
   }
 }
 
@@ -90,7 +90,7 @@ task mark_duplicates {
       String sample_name
       File input_bam
       File log
-      String alignment_dir
+   
       String tmp_dir
       Float max_memory
       String docker_image
@@ -98,17 +98,17 @@ task mark_duplicates {
      command {
       picard -Xmx${max_memory}G \
       MarkDuplicates \
-      -I ${alignment_dir}${input_bam} \
-      -O ${alignment_dir}${sample_name}.bam \
-      -M ${alignment_dir}${sample_name}-dup-metrics.txt \
-      -TMP_DIR ${tmp_dir} &> ${log}'
+      -I ${input_bam} \
+      -O ${sample_name}.bam \
+      -M ${sample_name}-dup-metrics.txt \
+      -TMP_DIR ${tmp_dir}
      }
      runtime {
       docker: docker_image
      }
      output{
-      File output_bam = "${alignment_dir}${sample_name}.bam"
-      File metrics = "${alignment_dir}${sample_name}-dup-metrics.txt" 
+      File output_bam = "${sample_name}.bam"
+      File metrics = "${sample_name}-dup-metrics.txt" 
      }
 }
 
@@ -116,16 +116,16 @@ task index_bam {
 
      String sample_name
      File input_bam
-     String alignment_dir
+  
      String docker_image
 
      command {
-		samtools index ${alignment_dir}${input_bam} ${alignment_dir}${sample_name}.bai
+		samtools index ${input_bam} ${sample_name}.bai
      }
      runtime {
 		docker: docker_image
      }
      output{
-		File indexed_bam = "${alignment_dir}${sample_name}.bai"
+		File indexed_bam = "${sample_name}.bai"
      }
 }
