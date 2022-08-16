@@ -39,9 +39,9 @@
   	"bidirectional_promoter_lncRNA",
   	"miRNA"
 	],
-	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/cgi-locations-hg38.csv.gz",
-	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/gencode.v34.annotation.gtf",
-	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/repeat-masker-hg38.csv",
+	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/cgi-locations-hg38.csv.gz",
+	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/gencode.v34.annotation.gtf",
+	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/repeat-masker-hg38.csv",
 	"WGSBisuLfIteMethylation.tss_distances": [
   	-1000,
   	1000
