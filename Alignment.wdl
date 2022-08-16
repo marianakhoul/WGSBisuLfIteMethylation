@@ -8,7 +8,6 @@ task bwameth_indexing {
    File ref_fasta
    String docker_image
    File bwameth_script
-   String log
    String ref_fasta_name = basename(ref_fasta,".fa")
 
   
