@@ -66,8 +66,8 @@ task qualimap {
     File input_bam
 
 
-    String memory
-    String threads
+    Int memory
+    Int threads
     
     command {
       qualimap bamqc -bam ${input_bam} -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G
