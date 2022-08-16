@@ -242,7 +242,8 @@ workflow WGSBisuLfIteMethylation {
             methylation_table = methyl_dackel.methyl_dackel_output,
             ref_fasta = ref_fasta,
             fdr_cutoff = fdr_cutoff,
-            methylation_cutoff = methylation_cutoff
+            methylation_cutoff = methylation_cutoff,
+            biotypes = biotypes
             
     }
     
