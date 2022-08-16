@@ -16,25 +16,24 @@ task methyl_dackel {
     File ref_fasta
     File bam_index
     File bam_file
-    String methylation_dir
-    File log
+
     
     command {
-     MethylDackel extract --mergeContext -o ${methylation_dir}/${sample_name} ${ref_fasta} ${bam_file}
+     MethylDackel extract --mergeContext -o ${sample_name} ${ref_fasta} ${bam_file}
     }
     runtime {
      docker: docker_image
     }
     output {
-     File methyl_dackel_output = "${methylation_dir}/${sample_name}_CpG.bedGraph"
+     File methyl_dackel_output = "${sample_name}_CpG.bedGraph"
     }
 
 }
 
 task bedgraph_to_methylation_ratio {
     
-    String methylation_dir
-    File log
+
+
     File methyl_dackel_output
     String sample_name
     String wg_blimp_R_script_path
@@ -47,33 +46,32 @@ task bedgraph_to_methylation_ratio {
      docker: docker_image
     }
     output {
-     File bedgraph_ratio = "${methylation_dir}/${sample_name}_CpG_ratio.bedGraph"
+     File bedgraph_ratio = "${sample_name}_CpG_ratio.bedGraph"
     }
 }
 
 task metilene_input {
     
-    String metilene_dir
+
     File bedgraph_ratio
-    String methylation_dir
+
     String docker_image
     
     command {
-     bedtools unionbedg -filler NA -i ${methylation_dir}/${bedgraph_ratio} > ${metilene_dir}/metilene-input.bedGraph
+     bedtools unionbedg -filler NA -i ${bedgraph_ratio} > metilene-input.bedGraph
     }
     runtime {
      docker: docker_image
     }
     output {
-     File metilene_input_file = "${metilene_dir}/metilene-input.bedGraph"
+     File metilene_input_file = "metilene-input.bedGraph"
     }
 }
 
 
 task metilene {
 
-    String metilene_dir
-    File log
+
     Int min_cpg
     Float min_diff
     String threads
@@ -81,94 +79,22 @@ task metilene {
     String docker_image
     
     command {
-     metilene -m ${min_cpg} -d ${min_diff} -t ${threads} ${metilene_dir}/${metilene_input_file} > ${metilene_dir}/dmrs.csv 2> ${log}
+     metilene -m ${min_cpg} -d ${min_diff} -t ${threads} ${metilene_input_file} > dmrs.csv
     }
     runtime {
      docker: docker_image
     }
     output {
-     File metilene_output = "${metilene_dir}/dmrs.csv"
+     File metilene_output = "dmrs.csv"
     }
 }
 
-
-task camel_index {
-
-    String docker_image
-    String camel_modules_path
-    File ref_fasta
-    String reference_fasta
-    
-    command {
-     python ${camel_modules_path}/index.py ${ref_fasta} ${reference_fasta}.h5
-    }
-    runtime {
-     docker: docker_image
-    }
-    output {
-     File reference_output = "${reference_fasta}.h5"
-    }
-}
-
-task camel_call {
-
-    String camel_modules_path
-    File reference_output
-    File log
-    String camel_dir
-    String sample_name
-    File input_bam
-    File bam_bai
-    String docker_image
-    
-    command {
-     python ${camel_modules_path}/call.py ${input_bam} ${reference_output} ${camel_dir}/${sample_name}.h5 2> ${log}
-    }
-    runtime {
-     docker: docker_image
-    }
-    output {
-     File camel_call_output = "${camel_dir}/{sample_name}.h5"
-    }
-}
-
-task camel_dmr {
-
-    File reference_output
-    String camel_modules_path
-    String camel_dir
-    String docker_image
-    File log
-    Float min_diff
-    Int min_cpg
-    Int min_cov
-    String case
-    String control
-    
-    command {
-     python ${camel_modules_path}/dmr.py ${reference_output} \
-     --case ${case} \
-     --control ${control} \
-     --min_diff ${min_diff} \
-     --min_cpg ${min_cpg} \
-     --min_cov ${min_cov} > ${camel_dir}/dmrs.csv 2> ${log}
-    }
-    runtime {
-     docker: docker_image
-    }
-    output {
-     File camel_call_output = "${camel_dir}/dmrs.csv"
-    }
-
-}
 
 
 task bsseq {
     
     String docker_image
     File bedgraph_ratio
-    String methylation_dir
-    String bsseq_dir
     String wg_blimp_R_script_path
     Int io_threads
     
@@ -179,8 +105,8 @@ task bsseq {
      docker: docker_image
     }
     output {
-     File rdata_file = "${bsseq_dir}/bsseq.Rdata"
-     File csv_file = "${bsseq_dir}/dmrs.csv"
-     File pdf_file = "${bsseq_dir}/top100.pdf"
+     File rdata_file = "bsseq.Rdata"
+     File csv_file = "dmrs.csv"
+     File pdf_file = "top100.pdf"
     }
 }
