@@ -23,8 +23,6 @@ workflow WGSBisuLfIteMethylation {
     # Parameters
     String wg_blimp_R_script_path
     String sample_name
-    String case
-    String control
     Array[String] biotypes
     File cgi_annotation_file
     File repeat_masker_annotation_file
@@ -50,9 +48,6 @@ workflow WGSBisuLfIteMethylation {
     # Reference Fasta
     File ref_fasta
     String reference_fasta
-    
-    # Camel path
-    String camel_modules_path
 
     # BWA Script
     File bwameth_script
