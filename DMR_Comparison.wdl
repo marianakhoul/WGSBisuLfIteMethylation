@@ -5,7 +5,7 @@
 
 task dmr_combination {
     
-    String dmr_dir
+
     String docker_image
     String wg_blimp_R_script_path
     File ref_fasta_index
@@ -17,15 +17,15 @@ task dmr_combination {
      docker: docker_image
     }
     output {
-     File bed_output = "${dmr_dir}/combined-dmrs.csv"
-     File csv_output = "${dmr_dir}/dmr-coverage/combined-dmrs.bed"
+     File bed_output = "combined-dmrs.csv"
+     File csv_output = "combined-dmrs.bed"
     }
 }
 
 
 task dmr_coverage {
     
-    String dmr_dir
+
     File input_bam
     File bam_bai
     File input_bed
@@ -35,14 +35,14 @@ task dmr_coverage {
     String docker_image
     
     command {
-     mosdepth --threads ${threads} --no-per-base --mapq ${annotation_min_mapq} --by ${input_bed} ${dmr_dir}/${sample_name} ${input_bam}
+     mosdepth --threads ${threads} --no-per-base --mapq ${annotation_min_mapq} --by ${input_bed} ${input_bam}
 
     }
     runtime {
      docker: docker_image
     }
     output {
-     File regions_output = "${dmr_dir}/dmr-coverage/${sample_name}.regions.bed.gz"
+     File regions_output = "${sample_name}.regions.bed.gz"
     }
 }
 
@@ -51,7 +51,7 @@ task dmr_annotation {
     
     String wg_blimp_R_script_path
     String docker_image
-    String dmr_dir
+
     File coverages
     File combined_dmrs
     Array[String] biotypes
@@ -67,6 +67,6 @@ task dmr_annotation {
      docker: docker_image
     }
     output {
-     File annotated_dmrs = "${dmr_dir}/annotated-dmrs.csv"
+     File annotated_dmrs = "annotated-dmrs.csv"
     }
 }
