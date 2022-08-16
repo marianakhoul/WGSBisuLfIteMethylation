@@ -74,7 +74,7 @@ task metilene {
 
     Int min_cpg
     Float min_diff
-    String threads
+    Int threads
     File metilene_input_file
     String docker_image
     
