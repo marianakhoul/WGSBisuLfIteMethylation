@@ -42,7 +42,7 @@
   	1000
 	],
  	"WGSBisuLfIteMethylation.methylseekr.min_cov": 5,
- 	"WGSBisuLfIteMethylation.methylseekr.methylation_cutoff": 0.5,
- 	"WGSBisuLfIteMethylation.methylseekr.fdr_cutoff": 5
+ 	"WGSBisuLfIteMethylation.methylation_cutoff": 0.5,
+ 	"WGSBisuLfIteMethylation.fdr_cutoff": 5
 
 }
