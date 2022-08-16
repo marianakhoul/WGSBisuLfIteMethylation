@@ -9,7 +9,7 @@
  	
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ5QQ0vfbFGFb34bvXGXbX",
-  	"WGSBisuLfIteMethylation.reference_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ7800vfb8B7qjKJ7fYgkB",
+  	"WGSBisuLfIteMethylation.reference_fasta": "hg38",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": 5,
