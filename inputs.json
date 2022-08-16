@@ -1,15 +1,15 @@
 {	"##_COMMENT": "FASTQ FILES", 
- 	"WGSBisuLfIteMethylation.fastq_file_1": "dx://DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq.gz",
- 	"WGSBisuLfIteMethylation.fastq_file_2": "dx://DFCI_Demo_Methylation:fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq.gz",
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq.gz",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq.gz",
  	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
  	
  	"##_COMMENT": "SCRIPT FILES", 
- 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://DFCI_Demo_Methylation:scripts/",
-   	"WGSBisuLfIteMethylation.bwameth_script": "dx://DFCI_Demo_Methylation:scripts/bwameth.py",
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/",
+   	"WGSBisuLfIteMethylation.bwameth_script": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/bwameth.py",
  	
 	"##_COMMENT": "REFERENCE FILES", 
-  	"WGSBisuLfIteMethylation.ref_fasta": "dx://DFCI_Demo_Methylation:resources/hg38/hg38.fa",
-  	"WGSBisuLfIteMethylation.reference_fasta": "dx://DFCI_Demo_Methylation:resources/hg38/hg38.fa.fai",
+  	"WGSBisuLfIteMethylation.ref_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/hg38.fa",
+  	"WGSBisuLfIteMethylation.reference_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/hg38.fa.fai",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.qualimap.memory": 5,
@@ -39,9 +39,9 @@
   	"bidirectional_promoter_lncRNA",
   	"miRNA"
 	],
-	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://DFCI_Demo_Methylation:Annotation Files/cgi-locations-hg38.csv.gz",
-	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://DFCI_Demo_Methylation:Annotation Files/gencode.v34.annotation.gtf",
-	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://DFCI_Demo_Methylation:Annotation Files/repeat-masker-hg38.csv",
+	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/cgi-locations-hg38.csv.gz",
+	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/gencode.v34.annotation.gtf",
+	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/Annotation Files/repeat-masker-hg38.csv",
 	"WGSBisuLfIteMethylation.tss_distances": [
   	-1000,
   	1000
