@@ -118,14 +118,18 @@ task multiqc {
 
     
     command {
-     multiqc -f -o ${fastqc_dir} ${fastqc_dir}/fastqc ${fastqc_dir}/picard-metrics ${fastqc_dir}/qualimap
+     echo ${alnMetrics_input} > my_file_list.txt
+     echo ${insertMetrics_input} >> my_file_list.txt
+     echo ${fastqc_input} >> my_file_list.txt
+     echo ${qualimap_input} >> my_file_list.txt
+     multiqc --file-list my_file_list.txt
 
     }
     runtime {
      docker: docker_image
     }
     output {
-    File multiqc_report = "${fastqc_dir}/multiqc_report.html"
+    File multiqc_report = "multiqc_report.html"
     }
     
 }
