@@ -5,14 +5,12 @@
 
 task methylseekr {
 
-    String methylation_dir
     String wg_blimp_R_script_path
     String docker_image
     String sample_name
     File cgi_annotation_file
     File gene_annotation_file
     File repeat_masker_annotation_file
-    String segmentation_dir
     Array[String] biotypes
     Array[Int] tss_distances
     Int min_cov
@@ -28,10 +26,10 @@ task methylseekr {
      docker: docker_image
     }
     output {
-     File pmd_all = "${segmentation_dir}/pmd-all.csv"
-     File umr_lmr_all = "${segmentation_dir}/umr-lmr-all.csv"
-     File pmd_segments = "${segmentation_dir}/${sample_name}/pmd-segments.csv"
-     File umr_lmr_with_pmd = "${segmentation_dir}/${sample_name}/LMRUMRwithPMD/umr-lmr.csv"
-     File umr_lmr_without_pmd = "${segmentation_dir}/${sample_name}/LMRUMRwithoutPMD/umr-lmr.csv"
+     File pmd_all = "pmd-all.csv"
+     File umr_lmr_all = "umr-lmr-all.csv"
+     File pmd_segments = "pmd-segments.csv"
+     File umr_lmr_with_pmd = "./LMRUMRwithPMD/umr-lmr.csv"
+     File umr_lmr_without_pmd = "./LMRUMRwithoutPMD/umr-lmr.csv"
     }
 }
