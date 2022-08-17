@@ -11,10 +11,10 @@ task bwameth_indexing {
    String ref_fasta_name = basename(ref_fasta,".fa")
 
   
-   command <<<
-    ~{bwameth_script} index ~{ref_fasta}
-    samtools faidx ~{ref_fasta}
-   >>>
+   command {
+    ${bwameth_script} index ${ref_fasta}
+    samtools faidx ${ref_fasta} -o ${ref_fasta_name}.fa.fai
+   }
    runtime {
     docker: docker_image
    }
