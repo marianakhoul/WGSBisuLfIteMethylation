@@ -57,6 +57,7 @@ workflow WGSBisuLfIteMethylation {
         input:
             docker_image = bwa_meth_docker,
             ref_fasta = ref_fasta,
-            bwameth_script = bwameth_script
+            bwameth_script = bwameth_script,
+            reference_fasta = reference_fasta
     }
 }
