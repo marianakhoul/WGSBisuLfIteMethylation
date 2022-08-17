@@ -1,14 +1,14 @@
 {	"##_COMMENT": "FASTQ FILES", 
- 	"WGSBisuLfIteMethylation.fastq_file_1": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFVB00J4ygB7JbPq7K4BbF",
- 	"WGSBisuLfIteMethylation.fastq_file_2": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFV1j0J4yv662j548JbjFq",
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/fastq/2021008_200ng-1_EMSeq_S4_R1_001.fastq",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/fastq/2021008_200ng-1_EMSeq_S4_R2_001.fastq",
  	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
  	
  	"##_COMMENT": "SCRIPT FILES", 
- 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/",
-   	"WGSBisuLfIteMethylation.bwameth_script": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/file-GFp0YG00J4yx2xG86KqK1Fx3",
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/scripts/",
+   	"WGSBisuLfIteMethylation.bwameth_script": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/scripts/bwameth.py",
  	
 	"##_COMMENT": "REFERENCE FILES", 
-  	"WGSBisuLfIteMethylation.ref_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ5QQ0vfbFGFb34bvXGXbX",
+  	"WGSBisuLfIteMethylation.ref_fasta": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/resource/hg38/hg38.fa",
   	"WGSBisuLfIteMethylation.reference_fasta": "hg38",
  
  	"##_COMMENT": "Parameters",
@@ -39,9 +39,9 @@
   	"bidirectional_promoter_lncRNA",
   	"miRNA"
 	],
-	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqgKQ0J4yzzQQ7GvZ1p8P2",
-	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqppQ0J4yxz5xY0bqBGPVV",
-	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqp000J4yzx6y6J7GpQqxG",
+	"WGSBisuLfIteMethylation.cgi_annotation_file": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/AnnotationFiles/cgi-locations-hg38.csv",
+	"WGSBisuLfIteMethylation.gene_annotation_file": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/AnnotationFiles/gencode.v34.annotation.gtf",
+	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "/Users/marianakhoul/Desktop/DNAnexus_pipeline2/WGSBisuLfIteMethylation/AnnotationFiles/repeat-masker-hg38.csv",
 	"WGSBisuLfIteMethylation.tss_distances": [
   	-1000,
   	1000
