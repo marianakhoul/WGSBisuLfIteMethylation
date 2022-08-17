@@ -1,0 +1,53 @@
+{	"##_COMMENT": "FASTQ FILES", 
+ 	"WGSBisuLfIteMethylation.fastq_file_1": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFVB00J4ygB7JbPq7K4BbF",
+ 	"WGSBisuLfIteMethylation.fastq_file_2": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFV1j0J4yv662j548JbjFq",
+ 	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
+ 	
+ 	"##_COMMENT": "SCRIPT FILES", 
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/",
+   	"WGSBisuLfIteMethylation.bwameth_script": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/file-GFp0YG00J4yx2xG86KqK1Fx3",
+ 	
+	"##_COMMENT": "REFERENCE FILES", 
+  	"WGSBisuLfIteMethylation.ref_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ5QQ0vfbFGFb34bvXGXbX",
+  	"WGSBisuLfIteMethylation.reference_fasta": "hg38",
+ 
+ 	"##_COMMENT": "Parameters",
+ 	"WGSBisuLfIteMethylation.qualimap.memory": 5,
+ 	"WGSBisuLfIteMethylation.picard_metrics.max_memory": 5,
+ 	"WGSBisuLfIteMethylation.mark_duplicates.max_memory": 5,
+ 	"WGSBisuLfIteMethylation.bwameth_align.threads": 10,
+ 	"WGSBisuLfIteMethylation.qualimap.threads": 10,
+  	"WGSBisuLfIteMethylation.metilene.threads": 10,
+ 	"WGSBisuLfIteMethylation.sort_bam.threads": 10,
+   	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
+ 	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
+ 	"WGSBisuLfIteMethylation.metilene.min_cpg": 5,
+ 	"WGSBisuLfIteMethylation.metilene.min_diff": 0.3,
+ 	"WGSBisuLfIteMethylation.bsseq.io_threads": 8,
+ 	"WGSBisuLfIteMethylation.dmr_coverage.annotation_min_mapq": 10,
+ 	"WGSBisuLfIteMethylation.dmr_coverage.threads": 8,
+ 	"WGSBisuLfIteMethylation.biotypes": [
+  	"protein_coding",
+  	"non_coding",
+  	"3prime_overlapping_ncRNA",
+  	"antisense",
+  	"lincRNA",
+  	"retained_intron",
+  	"sense_intronic",
+  	"sense_overlapping",
+  	"macro_lncRNA",
+  	"bidirectional_promoter_lncRNA",
+  	"miRNA"
+	],
+	"WGSBisuLfIteMethylation.cgi_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqgKQ0J4yzzQQ7GvZ1p8P2",
+	"WGSBisuLfIteMethylation.gene_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqppQ0J4yxz5xY0bqBGPVV",
+	"WGSBisuLfIteMethylation.repeat_masker_annotation_file": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/AnnotationFiles/file-GFkqp000J4yzx6y6J7GpQqxG",
+	"WGSBisuLfIteMethylation.tss_distances": [
+  	-1000,
+  	1000
+	],
+ 	"WGSBisuLfIteMethylation.methylseekr.min_cov": 5,
+ 	"WGSBisuLfIteMethylation.methylation_cutoff": 0.5,
+ 	"WGSBisuLfIteMethylation.fdr_cutoff": 5
+
+}
