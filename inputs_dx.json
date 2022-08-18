@@ -18,6 +18,7 @@
  	"WGSBisuLfIteMethylation.ref_index": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ7800vfb8B7qjKJ7fYgkB",
  
  	"##_COMMENT": "Parameters",
+	"WGSBisuLfIteMethylation.bwameth_align.threads": 10,
  	"WGSBisuLfIteMethylation.biotypes": [
   	"protein_coding",
   	"non_coding",
