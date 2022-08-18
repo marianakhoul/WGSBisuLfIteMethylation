@@ -23,12 +23,9 @@ task bwameth_align {
    String docker_image
 
    command {
-    set -o pipefail
-    set -e
-
-    ${bwameth_script} -t ${threads} --reference ${ref_fasta} ${fastq_file_1} ${fastq_file_2} \
-    | \ 
-    samtools view -b - > ${sample_name}.unsorted.bam 2>/dev/null
+    FQ1=$(cat "${fastq_file_1}" | tr '\n' ',')
+    FQ2=$(cat "${fastq_file_2}" | tr '\n' ',')
+    ${bwameth_script} -t ${threads} --reference ${ref_fasta} $FQ1 $FQ2 | samtools view -b - > ${sample_name}.unsorted.bam
   }
   runtime {
     docker: docker_image
