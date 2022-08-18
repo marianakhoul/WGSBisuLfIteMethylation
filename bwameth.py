@@ -1,4 +1,4 @@
-#!/home/lb089/miniconda3/envs/wg-blimp/bin/python
+#!/usr/bin/env python
 """
 map bisulfite converted reads to an insilico converted genome using bwa mem.
 A command to this program like:
