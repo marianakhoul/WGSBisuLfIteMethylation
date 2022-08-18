@@ -10,6 +10,12 @@
 	"##_COMMENT": "REFERENCE FILES", 
   	"WGSBisuLfIteMethylation.ref_fasta": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ5QQ0vfbFGFb34bvXGXbX",
   	"WGSBisuLfIteMethylation.reference_fasta": "hg38",
+ 	"WGSBisuLfIteMethylation.ref_amb": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ7780vfb1322jPG19kVV5",
+ 	"WGSBisuLfIteMethylation.ref_ann": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ77j0vfb7F6VGBzK3017g",
+ 	"WGSBisuLfIteMethylation.ref_bwt": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ78Q0vfb7F6VGBzK3017q",
+ 	"WGSBisuLfIteMethylation.ref_pac": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ6000vfb1PyFg4qy0K65p",
+ 	"WGSBisuLfIteMethylation.ref_sa": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ85j0vfb3jBqG841B8309",
+ 	"WGSBisuLfIteMethylation.ref_index": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/resources/hg38/file-GFZZ7800vfb8B7qjKJ7fYgkB",
  
  	"##_COMMENT": "Parameters",
  	"WGSBisuLfIteMethylation.biotypes": [
