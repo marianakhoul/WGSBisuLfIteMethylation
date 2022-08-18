@@ -19,11 +19,11 @@ task bwameth_indexing {
     docker: docker_image
    }
    output {
-    File ref_amb = "${ref_fasta_name}.amb"
-    File ref_ann = "${ref_fasta_name}.ann"
-    File ref_bwt = "${ref_fasta_name}.bwt"
-    File ref_pac = "${ref_fasta_name}.pac"
-    File ref_sa = "${ref_fasta_name}.sa"
+    File ref_amb = "${ref_fasta_name}.bwameth.c2t.amb"
+    File ref_ann = "${ref_fasta_name}.bwameth.c2t.ann"
+    File ref_bwt = "${ref_fasta_name}.bwameth.c2t.bwt"
+    File ref_pac = "${ref_fasta_name}.bwameth.c2t.pac"
+    File ref_sa = "${ref_fasta_name}.bwameth.c2t.sa"
     File ref_fasta_index = "${ref_fasta_name}.fa.fai"
   }
 }
