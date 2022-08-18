@@ -3,31 +3,6 @@
 ##
 ## Task Description
 
-task bwameth_indexing {
-
-   File ref_fasta
-   String docker_image
-   File bwameth_script
-   String ref_fasta_name = basename(ref_fasta,".fa")
-
-  
-   command {
-    ${bwameth_script} index ${ref_fasta}
-    samtools faidx ${ref_fasta} -o ${ref_fasta_name}.fa.fai
-   }
-   runtime {
-    docker: docker_image
-   }
-   output {
-    File ref_amb = "${ref_fasta_name}.fa.bwameth.c2t.amb"
-    File ref_ann = "${ref_fasta_name}.fa.bwameth.c2t.ann"
-    File ref_bwt = "${ref_fasta_name}.fa.bwameth.c2t.bwt"
-    File ref_pac = "${ref_fasta_name}.fa.bwameth.c2t.pac"
-    File ref_sa = "${ref_fasta_name}.fa.bwameth.c2t.sa"
-    File ref_fasta_index = "${ref_fasta_name}.fa.fai"
-  }
-}
-
 task bwameth_align {
 
    File ref_amb
