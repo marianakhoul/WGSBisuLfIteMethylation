@@ -19,7 +19,6 @@ task bwameth_indexing {
     docker: docker_image
    }
    output {
-    File ref_out = "${ref_fasta_name}.fa.bwameth.c2t"
     File ref_amb = "${ref_fasta_name}.fa.bwameth.c2t.amb"
     File ref_ann = "${ref_fasta_name}.fa.bwameth.c2t.ann"
     File ref_bwt = "${ref_fasta_name}.fa.bwameth.c2t.bwt"
