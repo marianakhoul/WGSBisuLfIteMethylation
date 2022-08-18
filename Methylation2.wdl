@@ -43,6 +43,12 @@ workflow WGSBisuLfIteMethylation {
     # Reference Fasta
     File ref_fasta
     String reference_fasta
+    File ref_amb
+ 	File ref_ann
+ 	File ref_bwt
+ 	File ref_pac
+ 	File ref_sa
+ 	File ref_index
 
     # BWA Script
     File bwameth_script
@@ -53,18 +59,22 @@ workflow WGSBisuLfIteMethylation {
     
 
     ## ALIGNMENT
-    call Alignment.bwameth_indexing {
+    call Alignment.bwameth_align {
         input:
-            docker_image = bwa_meth_docker,
             ref_fasta = ref_fasta,
-            bwameth_script = bwameth_script
+            ref_amb = ref_amb,
+            ref_ann = ref_ann,
+            ref_bwt = ref_bwt,
+            ref_pac = ref_pac,
+            ref_sa = ref_sa,
+            ref_fasta_index = ref_index,
+            docker_image = bwa_meth_docker,
+            bwameth_script = bwameth_script,
+            sample_name = sample_name,
+            fastq_file_1 = fastq_file_1,
+            fastq_file_2 = fastq_file_2
     }
     output {
-        File ref_amb = bwameth_indexing.ref_amb
-        File ref_ann = bwameth_indexing.ref_ann
-        File ref_bwt = bwameth_indexing.ref_bwt
-        File ref_pac = bwameth_indexing.ref_pac
-        File ref_sa = bwameth_indexing.ref_sa
-        File ref_fasta_index = bwameth_indexing.ref_fasta_index
+        File output_unsorted_bam = bwameth_align.output_unsorted_bam
   }
 }
