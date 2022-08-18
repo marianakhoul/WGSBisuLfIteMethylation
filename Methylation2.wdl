@@ -60,7 +60,6 @@ workflow WGSBisuLfIteMethylation {
             bwameth_script = bwameth_script
     }
     output {
-        File ref_out = bwameth_indexing.ref_out
         File ref_amb = bwameth_indexing.ref_amb
         File ref_ann = bwameth_indexing.ref_ann
         File ref_bwt = bwameth_indexing.ref_bwt
