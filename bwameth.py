@@ -325,7 +325,7 @@ def bwa_mem(fa, fq_convert_cmd, extra_args, threads=1, rg=None,
 
     if paired:
         cmd += ("-U 100 -p ")
-    cmd += "-R '{rg}' -t {threads} {extra_args} {conv_fa} -"
+    cmd += "-R '{rg}' -t {threads} {extra_args} {conv_fa}"
     cmd = cmd.format(**locals())
     sys.stderr.write("running: %s\n" % cmd.lstrip("|"))
     as_bam(cmd, fa, set_as_failed)
