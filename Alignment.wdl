@@ -23,8 +23,6 @@ task bwameth_align {
    String docker_image
 
    command {
-    FQ1=$(cat ${fastq_file_1} | tr '\n' ',')
-    FQ2=$(cat ${fastq_file_2} | tr '\n' ',')
     ${bwameth_script} -t ${threads} --reference ${ref_fasta} $FQ1 $FQ2 | samtools view -b - > ${sample_name}.unsorted.bam
   }
   runtime {
