@@ -42,13 +42,13 @@ workflow WGSBisuLfIteMethylation {
     
     # Reference Fasta
     File ref_fasta
-    String reference_fasta
     File ref_amb
  	File ref_ann
  	File ref_bwt
  	File ref_pac
  	File ref_sa
  	File ref_index
+    File reference_fasta
 
     # BWA Script
     File bwameth_script
@@ -68,6 +68,7 @@ workflow WGSBisuLfIteMethylation {
             ref_pac = ref_pac,
             ref_sa = ref_sa,
             ref_fasta_index = ref_index,
+            reference_fasta=reference_fasta
             docker_image = bwa_meth_docker,
             bwameth_script = bwameth_script,
             sample_name = sample_name,
