@@ -24,7 +24,7 @@ task bwameth_align {
    String docker_image
 
    command {
-    bwa mem -T 40 -B 2 -L 10 -CM -t ${threads} --reference ${ref_fasta} ${fastq_file_1} ${fastq_file_2} > ${sample_name}.unsorted.bam
+    bwa mem -T 40 -B 2 -L 10 -CM -t ${threads} ${reference_fasta} ${fastq_file_1} ${fastq_file_2} > ${sample_name}.unsorted.bam
   }
   runtime {
     docker: docker_image
