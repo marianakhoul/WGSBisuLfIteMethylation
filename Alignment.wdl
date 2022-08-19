@@ -12,7 +12,8 @@ task bwameth_align {
    File ref_sa
    File ref_fasta_index
    File ref_fasta
-
+   File reference_fasta
+   
    File fastq_file_1
    File fastq_file_2
    
