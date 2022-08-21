@@ -47,7 +47,13 @@ workflow WGSBisuLfIteMethylation {
     
     # Reference Fasta
     File ref_fasta
-    String reference_fasta
+    File ref_amb
+ 	File ref_ann
+ 	File ref_bwt
+ 	File ref_pac
+ 	File ref_sa
+ 	File ref_index
+    File reference_fasta
 
     # BWA Script
     File bwameth_script
@@ -55,31 +61,26 @@ workflow WGSBisuLfIteMethylation {
     # Fastq files
     File fastq_file_1
     File fastq_file_2
-    
+
 
     ## ALIGNMENT
-    call Alignment.bwameth_indexing {
-        input:
-            docker_image = bwa_meth_docker,
-            ref_fasta = ref_fasta,
-            bwameth_script = bwameth_script
-    }
     call Alignment.bwameth_align {
         input:
             ref_fasta = ref_fasta,
-            ref_amb = bwameth_indexing.ref_amb,
-            ref_ann = bwameth_indexing.ref_ann,
-            ref_bwt = bwameth_indexing.ref_bwt,
-            ref_pac = bwameth_indexing.ref_pac,
-            ref_sa = bwameth_indexing.ref_sa,
-            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            ref_amb = ref_amb,
+            ref_ann = ref_ann,
+            ref_bwt = ref_bwt,
+            ref_pac = ref_pac,
+            ref_sa = ref_sa,
+            ref_fasta_index = ref_index,
+            reference_fasta=reference_fasta
             docker_image = bwa_meth_docker,
             bwameth_script = bwameth_script,
             sample_name = sample_name,
             fastq_file_1 = fastq_file_1,
             fastq_file_2 = fastq_file_2
     }
-    
+ 
     call Alignment.sort_bam {
         input: 
             input_bam = bwameth_align.output_unsorted_bam,
@@ -248,6 +249,9 @@ workflow WGSBisuLfIteMethylation {
             biotypes = biotypes
             
     }
-    
+   
+   output {
+        File output_unsorted_bam = bwameth_align.output_unsorted_bam
+  } 
     
 }
