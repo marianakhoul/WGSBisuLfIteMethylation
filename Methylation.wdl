@@ -252,6 +252,7 @@ workflow WGSBisuLfIteMethylation {
    
    output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
+        File sorted_bam = sort_bam.output_sorted_bam
   } 
     
 }
