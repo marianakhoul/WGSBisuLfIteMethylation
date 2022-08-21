@@ -75,7 +75,16 @@ workflow WGSBisuLfIteMethylation {
             fastq_file_1 = fastq_file_1,
             fastq_file_2 = fastq_file_2
     }
+    
+     call Alignment.sort_bam {
+        input: 
+            input_bam = bwameth_align.output_unsorted_bam,
+            sample_name = sample_name,
+            docker_image = gotc_docker
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
+        File sorted_bam = sort_bam.
   }
 }
