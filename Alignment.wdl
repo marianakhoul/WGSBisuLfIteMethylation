@@ -27,12 +27,12 @@ task bwameth_align {
       set -o pipefail
       set -e
 
-      bwa mem -T 40 -B 2 -L 10 -CM -t ${threads} ${ref_fasta} ${fastq_file_1} ${fastq_file_2} > ${sample_name}.bam
+      bwa mem -T 40 -B 2 -L 10 -CM -t ${threads} ${reference_fasta} ${fastq_file_1} ${fastq_file_2} > ${sample_name}.bam
       samtools view -b ${sample_name}.bam - > ${sample_name}.unsorted.bam
   }
   runtime {
     docker: docker_image
-    memory: "10GB"
+    memory: "50GB"
   }
   output{
     File output_unsorted_bam = "${sample_name}.unsorted.bam"
@@ -52,6 +52,7 @@ task sort_bam {
    >>>
    runtime {
     docker: docker_image
+    memory: "10GB"
   }
    output{
     File output_sorted_bam = "${sample_name}.sorted.bam"
