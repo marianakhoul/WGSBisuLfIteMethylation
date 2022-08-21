@@ -28,6 +28,7 @@ task bwameth_align {
   }
   runtime {
     docker: docker_image
+    memory: "50GB"
   }
   output{
     File output_unsorted_bam = "${sample_name}.unsorted.bam"
