@@ -64,11 +64,12 @@ task mark_duplicates {
 
       String sample_name
       File input_bam
-      Float max_memory
+      Float max_memory = 8
       String docker_image
+      Int command_mem_gb = ceil(max_memory) - 2
 
      command {
-      picard -Xmx${max_memory}G \
+      picard -Xmx${command_mem_gb}G \
       MarkDuplicates \
       -I ${input_bam} \
       -O ${sample_name}.bam \
@@ -76,6 +77,7 @@ task mark_duplicates {
      }
      runtime {
       docker: docker_image
+      memory: "${max_memory} GB"
      }
      output{
       File output_bam = "${sample_name}.bam"
@@ -87,7 +89,7 @@ task index_bam {
 
      String sample_name
      File input_bam
-  
+     Float mem_size_gb = 4
      String docker_image
 
      command {
@@ -95,6 +97,7 @@ task index_bam {
      }
      runtime {
 		docker: docker_image
+		memory: "${max_memory} GB"
      }
      output{
 		File indexed_bam = "${sample_name}.bai"
