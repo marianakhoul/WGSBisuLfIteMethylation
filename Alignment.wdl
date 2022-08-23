@@ -89,7 +89,7 @@ task index_bam {
 
      String sample_name
      File input_bam
-     Float mem_size_gb = 4
+     Float max_memory = 4
      String docker_image
 
      command {
@@ -97,7 +97,7 @@ task index_bam {
      }
      runtime {
 		docker: docker_image
-		memory: "${mem_size_gb} GB"
+		memory: "${max_memory} GB"
      }
      output{
 		File indexed_bam = "${sample_name}.bai"
