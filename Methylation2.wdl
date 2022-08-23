@@ -83,8 +83,25 @@ workflow WGSBisuLfIteMethylation {
             docker_image = gotc_docker
     }
     
+    call Alignment.mark_duplicates {
+        input:
+            sample_name = sample_name,
+            input_bam = sort_bam.output_sorted_bam,
+            docker_image = picard_docker
+    }
+    
+    call Alignment.index_bam {
+        input:
+            sample_name = sample_name,
+            input_bam = mark_duplicates.output_bam,
+            docker_image = gotc_docker
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
+        File mark_duplicates_metrics = mark_duplicates.metrics
+        File mark_duplicates_output_bam = mark_duplicates.output_bam
+        File indexed_bam = index_bam.indexed_bam
   }
 }
