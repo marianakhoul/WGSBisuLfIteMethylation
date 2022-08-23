@@ -24,9 +24,6 @@ task bwameth_align {
    String docker_image
 
    command {
-      set -o pipefail
-      set -e
-
       bwa mem -T 40 -B 2 -L 10 -CM -t ${threads} ${reference_fasta} ${fastq_file_1} ${fastq_file_2} > ${sample_name}.bam
       samtools view -b ${sample_name}.bam - > ${sample_name}.unsorted.bam
   }
