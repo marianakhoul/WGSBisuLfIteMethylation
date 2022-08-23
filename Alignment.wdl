@@ -97,7 +97,7 @@ task index_bam {
      }
      runtime {
 		docker: docker_image
-		memory: "${max_memory} GB"
+		memory: "${mem_size_gb} GB"
      }
      output{
 		File indexed_bam = "${sample_name}.bai"
