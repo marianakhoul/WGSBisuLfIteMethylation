@@ -108,12 +108,12 @@ workflow WGSBisuLfIteMethylation {
     call Fastqc.picard_metrics {
         input:
             ref_fasta = ref_fasta,
-            ref_amb = bwameth_indexing.ref_amb,
-            ref_ann = bwameth_indexing.ref_ann,
-            ref_bwt = bwameth_indexing.ref_bwt,
-            ref_pac = bwameth_indexing.ref_pac,
-            ref_sa = bwameth_indexing.ref_sa,
-            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            ref_amb = ref_amb,
+            ref_ann = ref_ann,
+            ref_bwt = ref_bwt,
+            ref_pac = ref_pac,
+            ref_sa = ref_sa,
+            ref_fasta_index = ref_fasta_index,
             input_bam = mark_duplicates.output_bam,
             sample_name = sample_name,
             docker_image = gotc_docker
