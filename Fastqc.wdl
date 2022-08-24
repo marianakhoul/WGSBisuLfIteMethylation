@@ -9,7 +9,6 @@ task fastqc {
      String sample_name
      File input_bam
 
-     
      command <<<
       fastqc ~{input_bam}
      >>>
@@ -38,15 +37,17 @@ task picard_metrics {
     
     command <<<
     
-     picard -Xmx{max_memory}G CollectAlignmentSummaryMetrics \
-     -R ~{ref_fasta} \
-     -I ~{input_bam} \
-     -O ~{sample_name}-alignment.txt
+     java -Xmx${command_mem_gb}G -jar /usr/gitc/picard.jar \
+     CollectAlignmentSummaryMetrics \
+     R=~{ref_fasta} \
+     I-~{input_bam} \
+     O=~{sample_name}-alignment.txt
      
-     picard -Xmx{max_memory}G CollectInsertSizeMetrics \
-     -I ~{input_bam} \
-     -O ~{sample_name}-insert-size.txt \
-     -H ~{sample_name}-hist.pdf 
+     java -Xmx${command_mem_gb}G -jar /usr/gitc/picard.jar \
+     CollectInsertSizeMetrics \
+     I=~{input_bam} \
+     O=~{sample_name}-insert-size.txt \
+     H=~{sample_name}-hist.pdf 
      
     >>>
     runtime {
