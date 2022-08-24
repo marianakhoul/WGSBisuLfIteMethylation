@@ -97,11 +97,44 @@ workflow WGSBisuLfIteMethylation {
             docker_image = gotc_docker
     }
     
+    ## QC
+    call Fastqc.fastqc {
+        input:
+            docker_image = fastqc_docker,
+            sample_name = sample_name,
+            input_bam = mark_duplicates.output_bam
+    }
+    
+    call Fastqc.picard_metrics {
+        input:
+            ref_fasta = ref_fasta,
+            ref_amb = bwameth_indexing.ref_amb,
+            ref_ann = bwameth_indexing.ref_ann,
+            ref_bwt = bwameth_indexing.ref_bwt,
+            ref_pac = bwameth_indexing.ref_pac,
+            ref_sa = bwameth_indexing.ref_sa,
+            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            input_bam = mark_duplicates.output_bam,
+            sample_name = sample_name,
+            docker_image = picard_docker
+    }
+    
+    call Fastqc.qualimap {
+        input:
+            docker_image = qualimap_docker,
+            input_bam = mark_duplicates.output_bam
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
         File mark_duplicates_metrics = mark_duplicates.metrics
         File mark_duplicates_output_bam = mark_duplicates.output_bam
         File indexed_bam = index_bam.indexed_bam
+        File picard_metrics_alignment   = picard_metrics.alignment
+        File picard_metrics_insert_size = picard_metrics.insert_size
+        File picard_metrics_hist        = picard_metrics.hist
+        File fastqc_output_html = fastqc.output_html
+        File qualimap_report = qualimap.qualimap_report
   }
 }
