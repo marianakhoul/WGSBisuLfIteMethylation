@@ -10,11 +10,10 @@ task fastqc {
      File input_bam
 
      command <<<
-      fastqc ~{input_bam}
+      fastqc ~{input_bam} > ${sample_name}_fastqc.html
      >>>
      runtime{
       docker: docker_image
-      memory: "5 GB"
      }
      output{
       File output_html = "${sample_name}_fastqc.html"
@@ -73,7 +72,7 @@ task qualimap {
     Int threads = 8
     
     command {
-      qualimap bamqc -bam ${input_bam} -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G
+      qualimap bamqc -bam ${input_bam} -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G > qualimapReport.html
     }
     runtime {
      docker: docker_image
