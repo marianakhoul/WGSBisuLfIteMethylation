@@ -12,6 +12,7 @@
 #import "./Segmentation.wdl" as Segmentation
 
 import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
 
 workflow WGSBisuLfIteMethylation {
     
