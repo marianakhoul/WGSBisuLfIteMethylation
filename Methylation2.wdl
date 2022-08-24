@@ -34,7 +34,6 @@ workflow WGSBisuLfIteMethylation {
     String R_docker = "r-base:latest"
     String multiqc_docker = "ewels/multiqc"
     String fastqc_docker = "pegi3s/fastqc"
-    String picard_docker = "broadinstitute/picard"
     String qualimap_docker = "pegi3s/qualimap"  
     String bwa_meth_docker = "nfcore/methylseq"
     String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
@@ -116,7 +115,7 @@ workflow WGSBisuLfIteMethylation {
             ref_fasta_index = bwameth_indexing.ref_fasta_index,
             input_bam = mark_duplicates.output_bam,
             sample_name = sample_name,
-            docker_image = picard_docker
+            docker_image = gotc_docker
     }
     
     call Fastqc.qualimap {
