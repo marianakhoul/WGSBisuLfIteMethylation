@@ -71,9 +71,9 @@ task mark_duplicates {
      command {
       java -Xmx${command_mem_gb}G -jar /usr/gitc/picard.jar \
       MarkDuplicates \
-      -I ${input_bam} \
-      -O ${sample_name}.bam \
-      -M ${sample_name}-dup-metrics.txt 
+      I=${input_bam} \
+      O=${sample_name}.bam \
+      M=${sample_name}-dup-metrics.txt 
      }
      runtime {
       docker: docker_image
