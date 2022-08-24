@@ -69,7 +69,7 @@ task mark_duplicates {
       Int command_mem_gb = ceil(max_memory) - 2
 
      command {
-      java -jar picard.jar -Xmx${command_mem_gb}G \
+      java -jar /usr/gitc/picard.jar -Xmx${command_mem_gb}G \
       MarkDuplicates \
       -I ${input_bam} \
       -O ${sample_name}.bam \
