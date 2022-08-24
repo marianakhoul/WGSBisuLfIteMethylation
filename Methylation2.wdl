@@ -113,7 +113,7 @@ workflow WGSBisuLfIteMethylation {
             ref_bwt = ref_bwt,
             ref_pac = ref_pac,
             ref_sa = ref_sa,
-            ref_fasta_index = ref_fasta_index,
+            ref_fasta_index = ref_index,
             input_bam = mark_duplicates.output_bam,
             sample_name = sample_name,
             docker_image = gotc_docker
