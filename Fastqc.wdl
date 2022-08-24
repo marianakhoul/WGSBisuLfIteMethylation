@@ -33,17 +33,18 @@ task picard_metrics {
     File ref_sa
     File ref_fasta_index
     File ref_fasta
-    Int max_memory
+    Int max_memory = 2
+    
     
     command <<<
     
-     java -Xmx${command_mem_gb}G -jar /usr/gitc/picard.jar \
+     java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
      CollectAlignmentSummaryMetrics \
      R=~{ref_fasta} \
      I-~{input_bam} \
      O=~{sample_name}-alignment.txt
      
-     java -Xmx${command_mem_gb}G -jar /usr/gitc/picard.jar \
+     java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
      CollectInsertSizeMetrics \
      I=~{input_bam} \
      O=~{sample_name}-insert-size.txt \
@@ -52,6 +53,7 @@ task picard_metrics {
     >>>
     runtime {
      docker: docker_image
+     memory: "${max_memory} GB"
     }
     output {
      File alignment   = "${sample_name}-alignment.txt"
@@ -65,16 +67,16 @@ task qualimap {
     
     String docker_image
     File input_bam
-
-
-    Int memory
-    Int threads
+    
+    Int memory = 2
+    Int threads = 8
     
     command {
       qualimap bamqc -bam ${input_bam} -nt ${threads} --collect-overlap-pairs --skip-duplicated --java-mem-size=${memory}G
     }
     runtime {
      docker: docker_image
+     memory: "${memory} GB"
     }
     output {
      File qualimap_report = "qualimapReport.html"
