@@ -14,6 +14,7 @@ task fastqc {
      >>>
      runtime{
       docker: docker_image
+      memory: "5 GB"
      }
      output{
       File output_html = "${sample_name}_fastqc.html"
@@ -68,7 +69,7 @@ task qualimap {
     String docker_image
     File input_bam
     
-    Int memory = 2
+    Int memory = 5
     Int threads = 8
     
     command {
