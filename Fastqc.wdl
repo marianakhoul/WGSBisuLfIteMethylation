@@ -138,14 +138,13 @@ task multiqc {
 }
 
 task methylation_metrics {
-    
 
     String docker_image
     File bed_graphs
-    String wg_blimp_R_script_path
+    File methylationMetrics_R = "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/methylationMetrics.R"
     
     command {
-     Rscript ${wg_blimp_R_script_path}/methylationMetrics.R
+     ${methylationMetrics_R}
     }
     runtime {
      docker: docker_image
