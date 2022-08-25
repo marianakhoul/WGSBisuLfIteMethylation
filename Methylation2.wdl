@@ -166,6 +166,14 @@ workflow WGSBisuLfIteMethylation {
             sample_name = sample_name
     }
     
+    call Fastqc.methylation_metrics {
+            input:
+                    bed_graphs = methyl_dackel.methyl_dackel_output,
+                    docker_image = R_docker,
+                    wg_blimp_R_script_path = wg_blimp_R_script_path
+    }
+        
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -181,5 +189,6 @@ workflow WGSBisuLfIteMethylation {
         File mbias_ob = mbias.mbias_ob
         File multiqc_report = multiqc.multiqc_report
         File methyl_dackel_output = methyl_dackel.methyl_dackel_output
+        File methylation_metrics_ouput = methylation_metrics.methylation_metrics_output
   }
 }
