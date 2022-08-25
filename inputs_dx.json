@@ -4,7 +4,7 @@
  	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
  	
  	"##_COMMENT": "SCRIPT FILES", 
- 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/",
+ 	"WGSBisuLfIteMethylation.wg_blimp_R_script_path": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts",
    	"WGSBisuLfIteMethylation.bwameth_script": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/file-GG00Gk00J4yVXxG05QJGV61k",
  	
 	"##_COMMENT": "REFERENCE FILES", 
