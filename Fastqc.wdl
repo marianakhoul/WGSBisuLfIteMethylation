@@ -33,24 +33,24 @@ task picard_metrics {
     File ref_sa
     File ref_fasta_index
     File ref_fasta
-    Int max_memory = 2
+    Int max_memory = 10
     
     
-    command <<<
+    command {
     
      java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
      CollectAlignmentSummaryMetrics \
-     R=~{ref_fasta} \
-     I-~{input_bam} \
-     O=~{sample_name}-alignment.txt
+     R=${ref_fasta} \
+     I-${input_bam} \
+     O=${sample_name}-alignment.txt
      
      java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
      CollectInsertSizeMetrics \
-     I=~{input_bam} \
-     O=~{sample_name}-insert-size.txt \
-     H=~{sample_name}-hist.pdf 
+     I=${input_bam} \
+     O=${sample_name}-insert-size.txt \
+     H=${sample_name}-hist.pdf 
      
-    >>>
+    }
     runtime {
      docker: docker_image
      memory: "${max_memory} GB"
