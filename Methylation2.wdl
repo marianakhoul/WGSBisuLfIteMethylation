@@ -172,7 +172,14 @@ workflow WGSBisuLfIteMethylation {
                     docker_image = R_docker,
                     wg_blimp_R_script_path = wg_blimp_R_script_path
     }
-        
+       
+    call DMR_Calling.bedgraph_to_methylation_ratio {
+        input:
+            methyl_dackel_output = methyl_dackel.methyl_dackel_output,
+            sample_name = sample_name,
+            wg_blimp_R_script_path = wg_blimp_R_script_path,
+            docker_image = R_docker
+    }
     
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
@@ -190,5 +197,6 @@ workflow WGSBisuLfIteMethylation {
         File multiqc_report = multiqc.multiqc_report
         File methyl_dackel_output = methyl_dackel.methyl_dackel_output
         File methylation_metrics_ouput = methylation_metrics.methylation_metrics_output
-  }
+        File bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio
+  } 
 }
