@@ -13,6 +13,7 @@
 
 import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
 import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Calling.wdl" as DMR_Calling
 
 workflow WGSBisuLfIteMethylation {
     
@@ -150,6 +151,21 @@ workflow WGSBisuLfIteMethylation {
             qualimap_input = qualimap.qualimap_report
     }
     
+    call DMR_Calling.methyl_dackel {
+        input:
+            ref_fasta = ref_fasta,
+            ref_amb = bwameth_indexing.ref_amb,
+            ref_ann = bwameth_indexing.ref_ann,
+            ref_bwt = bwameth_indexing.ref_bwt,
+            ref_pac = bwameth_indexing.ref_pac,
+            ref_sa = bwameth_indexing.ref_sa,
+            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            docker_image = MethylDackel_docker,
+            bam_index = index_bam.indexed_bam,
+            bam_file = mark_duplicates.output_bam,
+            sample_name = sample_name
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -164,5 +180,6 @@ workflow WGSBisuLfIteMethylation {
         File mbias_ot = mbias.mbias_ot
         File mbias_ob = mbias.mbias_ob
         File multiqc_report = multiqc.multiqc_report
+        File methyl_dackel_output = methyl_dackel.methyl_dackel_output
   }
 }
