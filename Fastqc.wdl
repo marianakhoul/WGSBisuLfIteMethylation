@@ -145,7 +145,7 @@ task methylation_metrics {
     String wg_blimp_R_script_path
     
     command {
-     ${wg_blimp_R_script_path}/methylationMetrics.R
+     Rscript ${wg_blimp_R_script_path}/methylationMetrics.R
     }
     runtime {
      docker: docker_image
