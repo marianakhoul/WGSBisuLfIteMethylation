@@ -130,7 +130,7 @@ workflow WGSBisuLfIteMethylation {
             bam_index = index_bam.indexed_bam,
             bam_file = mark_duplicates.output_bam,
             ref_fasta = ref_fasta,
-            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            ref_fasta_index = ref_index,
             sample_name = sample_name,
             docker_image = MethylDackel_docker
     }
