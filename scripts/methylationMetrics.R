@@ -1,11 +1,5 @@
 #!/usr/bin/env Rscript
 
-if (exists("snakemake")) {
-  logFile <- file(snakemake@log[[1]])
-
-  sink(logFile, append = TRUE)
-  sink(logFile, append = TRUE, type = "message")
-}
 
 library(data.table)
 
