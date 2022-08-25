@@ -1,11 +1,4 @@
-if (exists("snakemake")) {
-  logFile <- file(snakemake@log[[1]])
-
-  sink(logFile, append = TRUE)
-  sink(logFile, append = TRUE, type = "message")
-
-  snakemake@source("regionAnnotation.R")
-}
+#!/usr/bin/env Rscript
 
 
 wgbs.annotateDMRs <- function (dmrFile, gzippedCgiFile, gzippedGeneFile, gzippedRepeatMaskerAnnotationFile, gzippedCoverageFiles, allowedBiotypes, promoterTSSDistances, annotatedDmrFile) {
