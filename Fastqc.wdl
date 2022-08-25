@@ -41,7 +41,7 @@ task picard_metrics {
      java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
      CollectAlignmentSummaryMetrics \
      R=${ref_fasta} \
-     I-${input_bam} \
+     I=${input_bam} \
      O=${sample_name}-alignment.txt
      
      java -Xmx${max_memory}G -jar /usr/gitc/picard.jar \
