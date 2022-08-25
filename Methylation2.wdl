@@ -140,6 +140,16 @@ workflow WGSBisuLfIteMethylation {
             docker_image = MethylDackel_docker
     }
     
+    call Fastqc.multiqc {
+        input:
+            docker_image = multiqc_docker,
+            alnMetrics_input = picard_metrics.alignment,
+            insertMetrics_input = picard_metrics.insert_size,
+            fastqc_input = fastqc.output_html,
+            sample_name = sample_name,
+            qualimap_input = qualimap.qualimap_report
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -153,5 +163,6 @@ workflow WGSBisuLfIteMethylation {
         File qualimap_report = qualimap.qualimap_report
         File mbias_ot = mbias.mbias_ot
         File mbias_ob = mbias.mbias_ob
+        File multiqc_report = multiqc.multiqc_report
   }
 }
