@@ -154,7 +154,7 @@ workflow WGSBisuLfIteMethylation {
     call DMR_Calling.methyl_dackel {
         input:
             ref_fasta = ref_fasta,
-            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            ref_fasta_index = ref_index,
             docker_image = MethylDackel_docker,
             bam_index = index_bam.indexed_bam,
             bam_file = mark_duplicates.output_bam,
