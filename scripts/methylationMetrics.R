@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 if (exists("snakemake")) {
   logFile <- file(snakemake@log[[1]])
 
