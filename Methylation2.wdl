@@ -125,6 +125,16 @@ workflow WGSBisuLfIteMethylation {
             input_bam = mark_duplicates.output_bam
     }
     
+    call Fastqc.mbias {
+        input:
+            bam_index = index_bam.indexed_bam,
+            bam_file = mark_duplicates.output_bam,
+            ref_fasta = ref_fasta,
+            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            sample_name = sample_name,
+            docker_image = MethylDackel_docker
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -136,5 +146,7 @@ workflow WGSBisuLfIteMethylation {
         File picard_metrics_hist        = picard_metrics.hist
         File fastqc_output_html = fastqc.output_html
         File qualimap_report = qualimap.qualimap_report
+        File mbias_ot = mbias.mbias_ot
+        File mbias_ob = mbias.mbias_ob
   }
 }
