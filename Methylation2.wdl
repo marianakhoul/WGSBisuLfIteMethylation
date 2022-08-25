@@ -33,7 +33,7 @@ workflow WGSBisuLfIteMethylation {
     String python_docker = "python"
     String mosdepth_docker = "zlskidmore/mosdepth"
     String metilene_docker = "quay.io/biocontainers/metilene:0.2.8--h516909a_0"
-    String R_docker = "r-base:latest"
+    String R_docker = "r-base"
     String multiqc_docker = "ewels/multiqc"
     String fastqc_docker = "pegi3s/fastqc"
     String qualimap_docker = "pegi3s/qualimap"  
