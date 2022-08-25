@@ -131,6 +131,11 @@ workflow WGSBisuLfIteMethylation {
             bam_file = mark_duplicates.output_bam,
             ref_fasta = ref_fasta,
             ref_fasta_index = ref_index,
+            ref_amb = ref_amb,
+            ref_ann = ref_ann,
+            ref_bwt = ref_bwt,
+            ref_pac = ref_pac,
+            ref_sa = ref_sa,
             sample_name = sample_name,
             docker_image = MethylDackel_docker
     }
