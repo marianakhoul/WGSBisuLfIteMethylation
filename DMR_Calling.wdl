@@ -7,11 +7,6 @@ task methyl_dackel {
     
     String docker_image
     String sample_name
-    File ref_amb
-    File ref_ann
-    File ref_bwt
-    File ref_pac
-    File ref_sa
     File ref_fasta_index
     File ref_fasta
     File bam_index
