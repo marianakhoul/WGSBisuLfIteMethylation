@@ -151,7 +151,7 @@ task methylation_metrics {
      docker: docker_image
     }
     output {
-     File methylation_metrics = "methylation_metrics.csv"
+     File methylation_metrics_output = "methylation_metrics.csv"
     }
     
 }
