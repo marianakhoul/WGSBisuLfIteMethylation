@@ -98,7 +98,7 @@ task mbias {
 
     
     command {
-     MethylDackel mbias ${ref_fasta} ${bam_file}
+     MethylDackel mbias ${ref_fasta} ${bam_file} ${sample_name}
     }
     runtime {
      docker: docker_image
