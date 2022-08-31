@@ -144,8 +144,7 @@ task methylation_metrics {
     String wg_blimp_R_script_path
     
     command {
-     library(Rserve)
-     Rserve(args="--save")
+     R CMD Rserve --no-save
      Rscript ${wg_blimp_R_script_path}/methylationMetrics.R
     }
     runtime {
