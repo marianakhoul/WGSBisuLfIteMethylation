@@ -141,12 +141,12 @@ task methylation_metrics {
 
     String docker_image
     File bed_graphs
-    File methylationMetrics_R = "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/methylationMetrics.R"
+    String wg_blimp_R_script_path
     
     command {
      library(Rserve)
      Rserve(args="--save")
-     ${methylationMetrics_R}
+     Rscript ${wg_blimp_R_script_path}/methylationMetrics.R
     }
     runtime {
      docker: docker_image
