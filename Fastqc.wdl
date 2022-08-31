@@ -145,7 +145,7 @@ task methylation_metrics {
     
     command {
      library(Rserve)
-     Rserve(args="--no-save")
+     Rserve(args="--save")
      ${methylationMetrics_R}
     }
     runtime {
