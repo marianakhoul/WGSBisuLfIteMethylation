@@ -1,5 +1,10 @@
 #!/usr/bin/env Rscript
 
+
+install.packages("Rserve")
+library(Rserve)
+Rserve(args="--no-save")
+
 library(data.table)
 
 wgbs.methylation.computeMeanMethylation <- function(methylationTable) {
