@@ -144,6 +144,8 @@ task methylation_metrics {
     File methylationMetrics_R = "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/scripts/methylationMetrics.R"
     
     command {
+     library(Rserve)
+     Rserve(args="--no-save")
      ${methylationMetrics_R}
     }
     runtime {
