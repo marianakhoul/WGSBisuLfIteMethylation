@@ -137,14 +137,16 @@ task multiqc {
     
 }
 
+
 task methylation_metrics {
-    String docker_image
-    File bed_graphs
-    
-    command{
-        Rscript /usr/local/bin/methylationMetrics.R ~{bed_graphs}
-    }
-    runtime {
+
+     String docker_image
+     File bed_graphs
+     
+     command {
+          Rscript /usr/local/bin/methylationMetrics.R ${bed_graphs}
+     }
+     runtime {
         docker: docker_image
     }
     output {
