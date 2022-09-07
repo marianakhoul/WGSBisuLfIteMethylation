@@ -139,7 +139,7 @@ task multiqc {
 
 task methylation_metrics {
 
-     String docker_image
+     File docker_image
      File bed_graphs
      
      command {
