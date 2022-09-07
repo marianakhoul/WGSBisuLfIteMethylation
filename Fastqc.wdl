@@ -137,7 +137,6 @@ task multiqc {
     
 }
 
-
 task methylation_metrics {
 
      String docker_image
