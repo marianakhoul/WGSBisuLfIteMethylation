@@ -164,8 +164,7 @@ workflow WGSBisuLfIteMethylation {
     call Fastqc.methylation_metrics {
             input:
                     bed_graphs = methyl_dackel.methyl_dackel_output,
-                    docker_image = R_docker,
-                    wg_blimp_R_script_path = wg_blimp_R_script_path
+                    docker_image = R_docker
     }
        
     call DMR_Calling.bedgraph_to_methylation_ratio {
