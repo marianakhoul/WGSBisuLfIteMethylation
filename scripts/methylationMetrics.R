@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 
-install.packages("Rserve")
 library(Rserve)
 Rserve(args="--no-save")
 
