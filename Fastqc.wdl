@@ -141,7 +141,7 @@ task methylation_metrics {
     String docker_image
     File bed_graphs
     
-    command {
+    command{
         Rscript /usr/local/bin/methylationMetrics.R ~{bed_graphs}
     }
     runtime {
