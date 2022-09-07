@@ -143,9 +143,9 @@ task methylation_metrics {
     File bed_graphs
     
     
-    command <<<
+    command {
         Rscript /usr/local/bin/methylationMetrics.R ~{bed_graphs}
-    >>>
+    }
 
     runtime {
         docker: docker_image
