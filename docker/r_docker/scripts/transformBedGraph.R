@@ -1,11 +1,24 @@
-if (exists("snakemake")) {
-  logFile <- file(snakemake@log[[1]])
+#!/usr/bin/env Rscript
 
-  sink(logFile, append = TRUE)
-  sink(logFile, append = TRUE, type = "message")
-}
-
+library(optparse)
+library(Rserve)
 library(data.table)
+Rserve(args="--no-save")
+
+
+option_list <- list(
+                make_option(c("--bed_graphs"), type = "character", help = "bed_graphs file"),
+                make_option(c("--output"), type = "character", help = "methylation_metrics output"),
+                make_option(c("--meth_rate_on_chr"), type = "float",default="0.1", help = "methylation rate on chromosome"))
+
+parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
+opt <- parse_args(parseobj)
+args <- commandArgs(TRUE)
+options(stringsAsFactors=FALSE, width=160, scipen=999)
+
+input<-opt$input
+output<-opt$output
+
 
 wgbs.metilene.transformMethylationValues <- function (inputFile, outputFile) {
 
@@ -28,11 +41,6 @@ wgbs.metilene.transformMethylationValues <- function (inputFile, outputFile) {
   write.table(transformedValues, file = outputFile, col.names = FALSE, quote = FALSE, sep = "\t", row.names = FALSE)
 }
 
-if (exists("snakemake")) {
-  wgbs.metilene.transformMethylationValues(
-    snakemake@input$bedGraph,
-    snakemake@output$bedGraph
-  )
 
-  # save.image("scripts/bedgraph-snakemake.RData")
-}
+wgbs.metilene.transformMethylationValues(input,output)
+
