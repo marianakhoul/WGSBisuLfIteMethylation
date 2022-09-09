@@ -7,9 +7,8 @@ Rserve(args="--no-save")
 
 
 option_list <- list(
-                make_option(c("--bed_graphs"), type = "character", help = "bed_graphs file"),
-                make_option(c("--output"), type = "character", help = "methylation_metrics output"),
-                make_option(c("--meth_rate_on_chr"), type = "float",default="0.1", help = "methylation rate on chromosome"))
+                make_option(c("--input"), type = "character", help = "bed_graphs file"),
+                make_option(c("--output"), type = "character", help = "methylation_metrics output"))
 
 parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
 opt <- parse_args(parseobj)
