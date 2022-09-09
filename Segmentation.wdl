@@ -20,7 +20,7 @@ task methylseekr {
     Float methylation_cutoff
     
     command {
-      R ${wg_blimp_R_script_path}/methylseekRSegmentation.R
+      Rscript /usr/local/bin/methylseekRSegmentation.R
     }
     runtime {
      docker: docker_image
