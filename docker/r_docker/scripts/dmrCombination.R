@@ -3,6 +3,24 @@
 library(GenomicRanges)
 library(data.table)
 library(tidyverse)
+library(optparse)
+library(Rserve)
+Rserve(args="--no-save")
+
+
+option_list <- list(
+                make_option(c("--bed_graphs"), type = "character", help = "bed_graphs file"),
+                make_option(c("--output"), type = "character", help = "methylation_metrics output"),
+                make_option(c("--meth_rate_on_chr"), type = "float",default="0.1", help = "methylation rate on chromosome"))
+
+parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
+opt <- parse_args(parseobj)
+args <- commandArgs(TRUE)
+options(stringsAsFactors=FALSE, width=160, scipen=999)
+
+bed_graphs<-opt$bed_graphs
+output<-opt$output
+rate<-opt$meth_rate_on_chr
 
 wgbs.rangesFromData <- function (chr, start, end, num_cpgs, diff, tool, qValues) {
 
@@ -112,10 +130,7 @@ wgbs.combineDmrs <- function (bsseqFile, camelFile, metileneFile, fastaIndex, cs
   return(sortedDMRs)
 }
 
-if (exists("snakemake")) {
-
-  # save.image(file = "scripts/dmr-combination-snakemake.Rdata")
-  wgbs.combineDmrs(
+ wgbs.combineDmrs(
     snakemake@input$bsseq,
     snakemake@input$camel,
     snakemake@input$metilene,
@@ -126,4 +141,3 @@ if (exists("snakemake")) {
     snakemake@config$min_diff
   )
 
-}
