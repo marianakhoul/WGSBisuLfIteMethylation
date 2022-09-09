@@ -7,11 +7,10 @@ task dmr_combination {
     
 
     String docker_image
-    String wg_blimp_R_script_path
     File ref_fasta_index
     
     command {
-     R ${wg_blimp_R_script_path}/dmrCombination.R
+     Rscript /usr/local/bin/dmrCombination.R
     }
     runtime {
      docker: docker_image
@@ -49,9 +48,7 @@ task dmr_coverage {
 
 task dmr_annotation {
     
-    String wg_blimp_R_script_path
     String docker_image
-
     File coverages
     File combined_dmrs
     Array[String] biotypes
@@ -61,7 +58,7 @@ task dmr_annotation {
     File repeat_masker_annotation_file
     
     command {
-     R ${wg_blimp_R_script_path}/dmrAnnotation.R
+     Rscript /usr/local/bin/dmrAnnotation.R
     }
     runtime {
      docker: docker_image
