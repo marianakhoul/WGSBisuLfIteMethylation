@@ -143,7 +143,7 @@ task methylation_metrics {
      File bed_graphs
      
      command {
-          Rscript /usr/local/bin/methylationMetrics.R ${bed_graphs}
+          Rscript /usr/local/bin/methylationMetrics.R --bed_graphs ${bed_graphs} --output methylation_metrics.csv
      }
      runtime {
         docker: docker_image
