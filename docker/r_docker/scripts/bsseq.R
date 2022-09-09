@@ -2,6 +2,26 @@
 
 library(bsseq)
 library(BiocParallel)
+library(optparse)
+library(Rserve)
+Rserve(args="--no-save")
+
+
+option_list <- list(
+                make_option(c("--input"), type = "character", help = "bed_graphs file"),
+                make_option(c("--rdata_file"), type = "character", help = "bed_graphs file"),
+                make_option(c("--csv_file"), type = "character", help = "methylation_metrics output"),
+                make_option(c("--pdf_file"), type = "float",default="0.1", help = "methylation rate on chromosome"))
+
+parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
+opt <- parse_args(parseobj)
+args <- commandArgs(TRUE)
+options(stringsAsFactors=FALSE, width=160, scipen=999)
+
+rdata_fils<-opt$rdata_file
+csv_file<-opt$csv_file
+pdf_file<-opt$pdf_file
+input<-opt$input
 
 callDmrs <- function (methylDackelBedGraphFiles, sampleNames, group1Samples, group2Samples, threads, min_cpg, min_diff, localCorrect, rdatFile, csvFile, pdfFile) {
 
@@ -53,10 +73,7 @@ callDmrs <- function (methylDackelBedGraphFiles, sampleNames, group1Samples, gro
   save.image(file = rdatFile)
 }
 
-if (exists("snakemake")) {
-
-  # save.image(file = "snakemake.Rdata")
-  callDmrs(snakemake@input$meth,
+callDmrs(snakemake@input$meth,
            snakemake@config$samples,
            snakemake@config$group1,
            snakemake@config$group2,
@@ -69,4 +86,4 @@ if (exists("snakemake")) {
            snakemake@output$pdf)
 
 
-}
+
