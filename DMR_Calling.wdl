@@ -35,7 +35,7 @@ task bedgraph_to_methylation_ratio {
     String docker_image
     
     command {
-     R ${wg_blimp_R_script_path}/transformBedGraph.R
+     Rscript /usr/local/bin/transformBedGraph.R
     }
     runtime {
      docker: docker_image
@@ -94,7 +94,7 @@ task bsseq {
     Int io_threads
     
     command {
-     R ${wg_blimp_R_script_path}/bsseq.R
+     Rscript /usr/local/bin/bsseq.R
     }
     runtime {
      docker: docker_image
