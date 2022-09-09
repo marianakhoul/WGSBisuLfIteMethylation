@@ -31,11 +31,10 @@ task bedgraph_to_methylation_ratio {
 
     File methyl_dackel_output
     String sample_name
-    String wg_blimp_R_script_path
     String docker_image
     
     command {
-     Rscript /usr/local/bin/transformBedGraph.R
+     Rscript /usr/local/bin/transformBedGraph.R --input ${methyl_dackel_output} --output ${sample_name}_CpG_ratio.bedGraph
     }
     runtime {
      docker: docker_image
@@ -90,11 +89,9 @@ task bsseq {
     
     String docker_image
     File bedgraph_ratio
-    String wg_blimp_R_script_path
-    Int io_threads
     
     command {
-     Rscript /usr/local/bin/bsseq.R
+     Rscript /usr/local/bin/bsseq.R --input ${bedgraph_ratio} --rdata_file bsseq.Rdata --csv_file dmrs.csv --pdf_file top100.pdf
     }
     runtime {
      docker: docker_image
