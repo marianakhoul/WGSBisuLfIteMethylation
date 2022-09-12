@@ -12,7 +12,8 @@ option_list <- list(
                 make_option(c("--bsseq_input"), type = "character", help = "bsseq output as input file"),
                 make_option(c("--bed_output"), type = "character", help = "bed file output"),
                 make_option(c("--csv_output"), type = "character", help = "csv output file"),
-                make_option(c("--csv_output"), type = "character", help = "csv output file"),)
+                make_option(c("--metilene_input"), type = "character", help = "metilene output as input file"),
+                make_option(c("--fasta_index"), type = "character", help = "fasta index as input file"))
 
 parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
 opt <- parse_args(parseobj)
@@ -22,6 +23,8 @@ options(stringsAsFactors=FALSE, width=160, scipen=999)
 bsseq_input<-opt$bsseq_input
 bed_output<-opt$bed_output
 csv_output<-opt$csv_output
+fasta_index<-opt$fasta_index
+metilene_input<-opt$metilene_input
 min_cpg<-5
 min_diff<-0.3
 
@@ -137,8 +140,8 @@ wgbs.combineDmrs <- function (bsseqFile, camelFile, metileneFile, fastaIndex, cs
  wgbs.combineDmrs(
     bsseq_input,
     #snakemake@input$camel,
-    snakemake@input$metilene,
-    snakemake@input$fasta_index,
+    metilene_input,
+    fasta_index,
     csv_output,
     bed_output,
     min_cpg,
