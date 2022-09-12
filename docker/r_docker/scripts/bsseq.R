@@ -18,7 +18,7 @@ opt <- parse_args(parseobj)
 args <- commandArgs(TRUE)
 options(stringsAsFactors=FALSE, width=160, scipen=999)
 
-rdata_fils<-opt$rdata_file
+rdata_file<-opt$rdata_file
 csv_file<-opt$csv_file
 pdf_file<-opt$pdf_file
 input<-opt$input
@@ -73,7 +73,7 @@ callDmrs <- function (methylDackelBedGraphFiles, sampleNames, group1Samples, gro
   save.image(file = rdatFile)
 }
 
-callDmrs(snakemake@input$meth,
+callDmrs(input,
            snakemake@config$samples,
            snakemake@config$group1,
            snakemake@config$group2,
@@ -81,9 +81,9 @@ callDmrs(snakemake@input$meth,
            snakemake@config$min_cpg,
            snakemake@config$min_diff,
            snakemake@params$local_correct,
-           snakemake@output$rdata,
-           snakemake@output$csv,
-           snakemake@output$pdf)
+           rdata_file,
+           csv_file,
+           pdf_file)
 
 
 
