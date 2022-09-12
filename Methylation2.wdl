@@ -8,12 +8,14 @@
 import "./Alignment.wdl" as Alignment
 import "./Fastqc.wdl" as Fastqc
 import "./DMR_Calling.wdl" as DMR_Calling
-#import "./DMR_Comparison.wdl" as DMR_Comparison
+import "./DMR_Comparison.wdl" as DMR_Comparison
 #import "./Segmentation.wdl" as Segmentation
 
 #import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
 #import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
 #import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Calling.wdl" as DMR_Calling
+#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Comparison.wdl" as DMR_Comparison
+#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Segmentation.wdl" as Segmentation
 
 workflow WGSBisuLfIteMethylation {
     
@@ -192,6 +194,14 @@ workflow WGSBisuLfIteMethylation {
             docker_image = R_docker
     }
     
+    call DMR_Comparison.dmr_combination {
+        input:
+            docker_image = R_docker,
+            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            metilene_input_file = metilene.metilene_output,
+            bsseq_input = bsseq.csv_file          
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -209,5 +219,12 @@ workflow WGSBisuLfIteMethylation {
         File methyl_dackel_output = methyl_dackel.methyl_dackel_output
         File methylation_metrics_ouput = methylation_metrics.methylation_metrics_output
         File bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio
+        File metilene_input_file = metilene_input.metilene-input.bedGraph
+        File metilene_output_file = metilene.metilene_output
+        File bsseq_rdata_file = bsseq.rdata_file
+        File bsseq_csv_file = bsseq.csv_file
+        File bsseq_pdf_file = bsseq.pdf_file
+        File dmr_combination_csv = dmr_combination.csv_output
+        File dmr_combination_bed = dmr_combination.bed_output 
   } 
 }
