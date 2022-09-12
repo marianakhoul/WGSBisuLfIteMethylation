@@ -171,7 +171,6 @@ workflow WGSBisuLfIteMethylation {
         input:
             methyl_dackel_output = methyl_dackel.methyl_dackel_output,
             sample_name = sample_name,
-            wg_blimp_R_script_path = wg_blimp_R_script_path,
             docker_image = R_docker
     }
     
