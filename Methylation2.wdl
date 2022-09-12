@@ -202,6 +202,28 @@ workflow WGSBisuLfIteMethylation {
             bsseq_input = bsseq.csv_file          
     }
     
+    call DMR_Comparison.dmr_coverage {
+        input:
+            input_bam = mark_duplicates.output_bam,
+            bam_bai = index_bam.indexed_bam,
+            docker_image = mosdepth_docker,
+            sample_name = sample_name,
+            input_bed = dmr_combination.bed_output
+    }
+    
+    call DMR_Comparison.dmr_annotation {
+        input:
+            biotypes = biotypes,
+            wg_blimp_R_script_path = wg_blimp_R_script_path,
+            docker_image = R_docker,
+            coverages = dmr_coverage.regions_output,
+            cgi_annotation_file = cgi_annotation_file,
+            combined_dmrs = dmr_combination.csv_output,
+            tss_distances = tss_distances,
+            gene_annotation_file = gene_annotation_file,
+            repeat_masker_annotation_file = repeat_masker_annotation_file
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -226,5 +248,7 @@ workflow WGSBisuLfIteMethylation {
         File bsseq_pdf_file = bsseq.pdf_file
         File dmr_combination_csv = dmr_combination.csv_output
         File dmr_combination_bed = dmr_combination.bed_output 
+        File dmr_coverage_regions = dmr_coverage.regions_output
+        File dmr_annotation_dmrs = dmr_annotation.annotated_dmrs
   } 
 }
