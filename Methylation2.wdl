@@ -174,6 +174,24 @@ workflow WGSBisuLfIteMethylation {
             docker_image = R_docker
     }
     
+    call DMR_Calling.metilene_input {
+        input:
+            bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio,
+            docker_image = bedtools_docker
+    }
+    
+    call DMR_Calling.metilene {
+        input:
+            metilene_input_file = metilene_input.metilene_input_file,
+            docker_image = metilene_docker
+    }
+    
+    call DMR_Calling.bsseq {
+        input:
+            bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio,
+            docker_image = R_docker
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
