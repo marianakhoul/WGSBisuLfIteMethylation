@@ -22,6 +22,7 @@ rdata_file<-opt$rdata_file
 csv_file<-opt$csv_file
 pdf_file<-opt$pdf_file
 input<-opt$input
+threads<-8
 
 callDmrs <- function (methylDackelBedGraphFiles, sampleNames, group1Samples, group2Samples, threads, min_cpg, min_diff, localCorrect, rdatFile, csvFile, pdfFile) {
 
@@ -77,7 +78,7 @@ callDmrs(input,
            snakemake@config$samples,
            snakemake@config$group1,
            snakemake@config$group2,
-           snakemake@threads,
+           threads,
            snakemake@config$min_cpg,
            snakemake@config$min_diff,
            snakemake@params$local_correct,
