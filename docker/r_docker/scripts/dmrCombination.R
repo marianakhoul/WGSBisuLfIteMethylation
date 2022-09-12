@@ -64,25 +64,6 @@ wgbs.loadBsseqData <- function (bsseqFile, minCpG, minDiff) {
 
 }
 
-wgbs.loadCamelData <- function (camelFile) {
-
-  if (is.null(camelFile)) return(GRanges())
-
-  rawData <- fread(camelFile, stringsAsFactors = FALSE, data.table = FALSE)
-
-  colnames(rawData) <- c("chr", "start", "stop", "n", "core_diff")
-
-  return(wgbs.rangesFromData(
-    rawData$chr,
-    rawData$start,
-    rawData$stop,
-    rawData$n,
-    rawData$core_diff,
-    "camel",
-    NA)
-  )
-}
-
 wgbs.loadMetileneData <- function (metileneFile) {
 
   if (is.null(metileneFile)) return(GRanges())
@@ -103,13 +84,12 @@ wgbs.loadMetileneData <- function (metileneFile) {
 
 }
 
-wgbs.combineDmrs <- function (bsseqFile, camelFile, metileneFile, fastaIndex, csvOutput, bedOutput, minCpG, minDiff) {
+wgbs.combineDmrs <- function (bsseqFile, metileneFile, fastaIndex, csvOutput, bedOutput, minCpG, minDiff) {
 
   bsseqRanges    <- wgbs.loadBsseqData(bsseqFile, minCpG, minDiff)
-  camelRanges    <- wgbs.loadCamelData(camelFile)
   metileneRanges <- wgbs.loadMetileneData(metileneFile)
 
-  combinedRanges <- c(bsseqRanges, camelRanges, metileneRanges)
+  combinedRanges <- c(bsseqRanges, metileneRanges)
 
   seqs <- as.character(seqnames(combinedRanges))
 
