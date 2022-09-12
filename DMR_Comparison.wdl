@@ -10,7 +10,7 @@ task dmr_combination {
     
     
     command {
-     Rscript /usr/local/bin/dmrCombination.R --bsseq_input --metilene_input --fasta_index ref_fasta_index --bed_output combined-dmrs.csv --csv_output combined-dmrs.bed
+     Rscript /usr/local/bin/dmrCombination.R --bsseq_input --metilene_input --fasta_index ${ref_fasta_index} --bed_output combined-dmrs.csv --csv_output combined-dmrs.bed
     }
     runtime {
      docker: docker_image
