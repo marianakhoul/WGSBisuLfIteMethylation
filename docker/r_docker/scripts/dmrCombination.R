@@ -9,18 +9,22 @@ Rserve(args="--no-save")
 
 
 option_list <- list(
-                make_option(c("--bed_graphs"), type = "character", help = "bed_graphs file"),
-                make_option(c("--output"), type = "character", help = "methylation_metrics output"),
-                make_option(c("--meth_rate_on_chr"), type = "float",default="0.1", help = "methylation rate on chromosome"))
+                make_option(c("--bsseq_input"), type = "character", help = "bsseq output as input file"),
+                make_option(c("--bed_output"), type = "character", help = "bed file output"),
+                make_option(c("--csv_output"), type = "character", help = "csv output file"),
+                make_option(c("--csv_output"), type = "character", help = "csv output file"),)
 
 parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
 opt <- parse_args(parseobj)
 args <- commandArgs(TRUE)
 options(stringsAsFactors=FALSE, width=160, scipen=999)
 
-bed_graphs<-opt$bed_graphs
-output<-opt$output
-rate<-opt$meth_rate_on_chr
+bsseq_input<-opt$bsseq_input
+bed_output<-opt$bed_output
+csv_output<-opt$csv_output
+min_cpg<-5
+min_diff<-0.3
+
 
 wgbs.rangesFromData <- function (chr, start, end, num_cpgs, diff, tool, qValues) {
 
@@ -131,13 +135,13 @@ wgbs.combineDmrs <- function (bsseqFile, camelFile, metileneFile, fastaIndex, cs
 }
 
  wgbs.combineDmrs(
-    snakemake@input$bsseq,
-    snakemake@input$camel,
+    bsseq_input,
+    #snakemake@input$camel,
     snakemake@input$metilene,
     snakemake@input$fasta_index,
-    snakemake@output$csv,
-    snakemake@output$bed,
-    snakemake@config$min_cpg,
-    snakemake@config$min_diff
+    csv_output,
+    bed_output,
+    min_cpg,
+    min_diff
   )
 
