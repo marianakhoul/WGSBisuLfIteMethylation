@@ -214,7 +214,6 @@ workflow WGSBisuLfIteMethylation {
     call DMR_Comparison.dmr_annotation {
         input:
             biotypes = biotypes,
-            wg_blimp_R_script_path = wg_blimp_R_script_path,
             docker_image = R_docker,
             coverages = dmr_coverage.regions_output,
             cgi_annotation_file = cgi_annotation_file,
