@@ -198,7 +198,7 @@ workflow WGSBisuLfIteMethylation {
     call DMR_Comparison.dmr_combination {
         input:
             docker_image = R_docker,
-            ref_fasta_index = bwameth_indexing.ref_fasta_index,
+            ref_fasta_index = ref_index,
             metilene_input_file = metilene.metilene_output,
             bsseq_input = bsseq.csv_file          
     }
