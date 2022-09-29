@@ -22,10 +22,7 @@ option_list <- list(
                 make_option(c("--pmd_all"), type = "character", help = "pmd_all output file name"),
                 make_option(c("--umr_lmr_all"), type = "character", help = "umr_lmr_all output file name"),
                 make_option(c("--min_coverage"), type = "int",default = "5", help = "Minimum coverage number"),
-                
-
-
-)
+                make_option(c("--samples"), type = "int",default = "5", help = "samples array"))
 
 parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
 opt <- parse_args(parseobj)
@@ -37,10 +34,10 @@ fastaRefFile <- opt$input_ref
 cgiAnnotationFile <- opt$cgiAnnotation
 geneAnnotationFile <- opt$geneAnnotation
 repeatMaskerAnnotationFile <- opt$repeatMaskerAnnotation
-samples <- snakemake@params$samples
+samples <- opt$samples
 targetDir <- "./"
 methylationDir <- "./"
-calibrationChr <- snakemake@params$calibration_chr
+calibrationChr <- "chr1"
 allowedBiotypes <- opt$biotypes
 tssDistances <- opt$tss_distances
 numThreads <- opt$threads
