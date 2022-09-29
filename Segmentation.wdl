@@ -19,7 +19,7 @@ task methylseekr {
     Float methylation_cutoff
     
     command {
-      Rscript /usr/local/bin/methylseekRSegmentation.R --methylation_cutoff ${methylation_cutoff} --fdr_cutoff ${fdr_cutoff} --min_coverage ${min_cov} --umr_lmr_all "umr-lmr-all.csv" --pmd_all "pmd-all.csv" --tss_distances ${tss_distances} --biotypes ${biotypes} --input_ref ${ref_fasta} --samples ${samples} --cgiAnnotation ${cgi_annotation_file} --geneAnnotation ${gene_annotation_file} --threads 10 --repeatMaskerAnnotation ${repeat_masker_annotation_file}
+      Rscript /usr/local/bin/methylseekRSegmentation.R --methylation_cutoff ${methylation_cutoff} --fdr_cutoff ${fdr_cutoff} --min_coverage ${min_cov} --umr_lmr_all "umr-lmr-all.csv" --pmd_all "pmd-all.csv" --tss_distances ~{tss_distances} --biotypes ~{biotypes} --input_ref ${ref_fasta} --samples ${samples} --cgiAnnotation ${cgi_annotation_file} --geneAnnotation ${gene_annotation_file} --threads 10 --repeatMaskerAnnotation ${repeat_masker_annotation_file}
     }
     runtime {
      docker: docker_image
