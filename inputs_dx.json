@@ -1,7 +1,7 @@
 {	"##_COMMENT": "FASTQ FILES", 
  	"WGSBisuLfIteMethylation.fastq_file_1": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFVB00J4ygB7JbPq7K4BbF",
  	"WGSBisuLfIteMethylation.fastq_file_2": "dx://project-GFkF0FQ0J4yXxzp05zv6bvxy:/fastq/file-GFkFV1j0J4yv662j548JbjFq",
- 	"WGSBisuLfIteMethylation.samples": "[2021008_200ng-1_EMSeq_S4_001]",
+ 	"WGSBisuLfIteMethylation.samples": ["2021008_200ng-1_EMSeq_S4_001"],
  	"WGSBisuLfIteMethylation.sample_name": "2021008_200ng-1_EMSeq_S4_001",
  	
  	"##_COMMENT": "SCRIPT FILES", 
