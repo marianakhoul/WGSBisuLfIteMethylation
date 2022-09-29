@@ -21,7 +21,7 @@ workflow WGSBisuLfIteMethylation {
     
     # Parameters
     String wg_blimp_R_script_path
-    Array[String] sample_name
+    String sample_name
     Array[String] biotypes
     File cgi_annotation_file
     File repeat_masker_annotation_file
