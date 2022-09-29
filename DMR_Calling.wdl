@@ -73,7 +73,7 @@ task metilene {
     String docker_image
     
     command {
-     metilene -m ${min_cpg} -d ${min_diff} -a "" -b "" -t ${threads} ${metilene_input_file} > dmrs.csv
+     metilene -m ${min_cpg} -d ${min_diff} -a "2021008_200ng-1_EMSeq_S4_001" -b "2021008_200ng-1_EMSeq_S4_001" -t ${threads} ${metilene_input_file} > dmrs.csv
     }
     runtime {
      docker: docker_image
