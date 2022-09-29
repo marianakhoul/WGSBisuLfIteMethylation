@@ -7,7 +7,7 @@ library(data.table)
 library(rtracklayer)
 library(parallel)
 library(Biostrings)
-
+source("/usr/local/bin/regionAnnotation.R")
 
 option_list <- list(
                 make_option(c("--input_ref"), type = "character", help = "input reference fasta"),
@@ -46,6 +46,7 @@ targetUmrLmrFile <- opt$umr_lmr_all
 minimumCoverage <- opt$min_coverage
 fdrCutoff <- opt$fdr_cutoff
 methylationCutoff <- opt$methylation_cutoff
+
 
 ### GLOBALS
 
@@ -114,9 +115,6 @@ setMethod("getSeq", "BlimpDnaStringSet", function (x, names, ...) {
   callNextMethod(x, names)
 })
 
-
-
-snakemake@source("regionAnnotation.R")
 
 ### SCRIPT
 
