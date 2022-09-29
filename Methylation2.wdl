@@ -9,7 +9,7 @@ import "./Alignment.wdl" as Alignment
 import "./Fastqc.wdl" as Fastqc
 import "./DMR_Calling.wdl" as DMR_Calling
 import "./DMR_Comparison.wdl" as DMR_Comparison
-#import "./Segmentation.wdl" as Segmentation
+import "./Segmentation.wdl" as Segmentation
 
 #import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
 #import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
@@ -223,6 +223,21 @@ workflow WGSBisuLfIteMethylation {
             repeat_masker_annotation_file = repeat_masker_annotation_file
     }
     
+    call Segmentation.methylseekr {
+        input:
+            docker_image = R_docker,
+            cgi_annotation_file = cgi_annotation_file,
+            gene_annotation_file = gene_annotation_file,
+            repeat_masker_annotation_file = repeat_masker_annotation_file,
+            sample_name = sample_name,
+            tss_distances = tss_distances,
+            methylation_table = methyl_dackel.methyl_dackel_output,
+            ref_fasta = ref_fasta,
+            fdr_cutoff = fdr_cutoff,
+            methylation_cutoff = methylation_cutoff,
+            biotypes = biotypes       
+    }
+    
     output {
         File output_unsorted_bam = bwameth_align.output_unsorted_bam
         File sorted_bam = sort_bam.output_sorted_bam
@@ -249,5 +264,10 @@ workflow WGSBisuLfIteMethylation {
         File dmr_combination_bed = dmr_combination.bed_output 
         File dmr_coverage_regions = dmr_coverage.regions_output
         File dmr_annotation_dmrs = dmr_annotation.annotated_dmrs
+        File pmd_all_file = methylseekr.pmd_all
+        File umr_lmr_all_file = methylseekr.umr_lmr_all
+        File pmd_segments_file = methylseekr.pmd_segments
+        File umr_lmr_with_pmd_file = methylseekr.umr_lmr_with_pmd
+        File umr_lmr_without_pmd_file = methylseekr.umr_lmr_without_pmd
   } 
 }
