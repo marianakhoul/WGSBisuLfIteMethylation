@@ -1,16 +1,54 @@
-if (exists("snakemake")) {
-  logFile <- file(snakemake@log[[1]])
+#!/usr/bin/env Rscript
 
-  sink(logFile, append = TRUE)
-  sink(logFile, append = TRUE, type = "message")
-}
-
+library(optparse)
 library(MethylSeekR)
 library(tidyverse)
 library(data.table)
 library(rtracklayer)
 library(parallel)
 library(Biostrings)
+
+
+option_list <- list(
+                make_option(c("--input_ref"), type = "character", help = "input reference fasta"),
+                make_option(c("--cgiAnnotation"), type = "character", help = "cgi annotation file path"),
+                make_option(c("--geneAnnotation"), type = "character", help = "gene annotation file path"),
+                make_option(c("--repeatMaskerAnnotation"), type = "character", help = "repeat masker annotation file path"),
+                make_option(c("--threads"), type = "int", default = "10",help = "number of threads to use"),
+                make_option(c("--tss_distances"), type = "character", help = "tss distance array"),
+                make_option(c("--methylation_cutoff"), type = "float",default = "0.5", help = "methylation cutoff number"),
+                make_option(c("--fdr_cutoff"), type = "int",default = "5", help = "FDR cutoff number"),
+                make_option(c("--biotypes"), type = "character", help = "allowed biotypes array"),
+                make_option(c("--pmd_all"), type = "character", help = "pmd_all output file name"),
+                make_option(c("--umr_lmr_all"), type = "character", help = "umr_lmr_all output file name"),
+                make_option(c("--min_coverage"), type = "int",default = "5", help = "Minimum coverage number"),
+                
+
+
+)
+
+parseobj <- OptionParser(option_list=option_list, usage = "usage: Rscript %prog [options]")
+opt <- parse_args(parseobj)
+args <- commandArgs(TRUE)
+options(stringsAsFactors=FALSE, width=160, scipen=999)
+
+
+fastaRefFile <- opt$input_ref
+cgiAnnotationFile <- opt$cgiAnnotation
+geneAnnotationFile <- opt$geneAnnotation
+repeatMaskerAnnotationFile <- opt$repeatMaskerAnnotation
+samples <- snakemake@params$samples
+targetDir <- "./"
+methylationDir <- "./"
+calibrationChr <- snakemake@params$calibration_chr
+allowedBiotypes <- opt$biotypes
+tssDistances <- opt$tss_distances
+numThreads <- opt$threads
+targetPmdFile <- opt$pmd_all
+targetUmrLmrFile <- opt$umr_lmr_all
+minimumCoverage <- opt$min_coverage
+fdrCutoff <- opt$fdr_cutoff
+methylationCutoff <- opt$methylation_cutoff
 
 ### GLOBALS
 
@@ -21,7 +59,7 @@ SEGMENTATION_FONT_SIZE <- 14
 ### FUNCTIONS
 segmentIntoUMRsAndLMRs <- function(sample, methylationRanges, cgiRanges, numThreads, targetDir, genomeSeq, seqLengths, pmdSegments, sequencesStartingWithChr, minCoverage, fdrCutoff, methylationCutoff) {
 
-  png(paste0(targetDir, "/fdr.stats.png"))
+  png(paste0(targetDir, "fdr.stats.png"))
   fdrStats <- calculateFDRs(
     m = methylationRanges,
     CGIs = cgiRanges,
@@ -33,7 +71,7 @@ segmentIntoUMRsAndLMRs <- function(sample, methylationRanges, cgiRanges, numThre
 
   selectedN <- as.integer(names(fdrStats$FDRs[as.character(methylationCutoff), ][fdrStats$FDRs[as.character(methylationCutoff), ] < fdrCutoff])[1])
 
-  png(paste0(targetDir, "/umr-lmr-heatmap.png"))
+  png(paste0(targetDir, "umr-lmr-heatmap.png"))
   segments <- segmentUMRsLMRs(
     m = methylationRanges,
     meth.cutoff = methylationCutoff,
@@ -46,7 +84,7 @@ segmentIntoUMRsAndLMRs <- function(sample, methylationRanges, cgiRanges, numThre
   )
   dev.off()
 
-  png(paste0(targetDir, "/umr-lmr-segmentation.png"), width = SEGMENTATION_WIDTH_PX, height = SEGMENTATION_HEIGHT_PX, pointsize = SEGMENTATION_FONT_SIZE)
+  png(paste0(targetDir, "umr-lmr-segmentation.png"), width = SEGMENTATION_WIDTH_PX, height = SEGMENTATION_HEIGHT_PX, pointsize = SEGMENTATION_FONT_SIZE)
   plotFinalSegmentation(
     m = methylationRanges,
     segs = segments,
@@ -69,7 +107,7 @@ segmentIntoUMRsAndLMRs <- function(sample, methylationRanges, cgiRanges, numThre
     pmds_masked = !(length(pmdSegments) == 1 && is.na(pmdSegments))
   )
 
-  fwrite(umrLmrTable, file = paste0(targetDir, "/umr-lmr.csv"))
+  fwrite(umrLmrTable, file = paste0(targetDir, "umr-lmr.csv"))
 }
 
 # HACK: create own class for DNAStringSets with MethylSeekR. Otherwise one would always have to
@@ -80,28 +118,6 @@ setMethod("getSeq", "BlimpDnaStringSet", function (x, names, ...) {
 })
 
 
-### INPUT
-
-# if (exists("snakemake")) {
-#  save.image("methylseekr-debug.rds")
-# }
-
-fastaRefFile <- snakemake@input$ref
-cgiAnnotationFile <- snakemake@params$cgi_annotation_file
-geneAnnotationFile <- snakemake@params$gene_annotation_file
-repeatMaskerAnnotationFile <- snakemake@params$repeat_masker_annotation_file
-samples <- snakemake@params$samples
-targetDir <- snakemake@params$target_dir
-methylationDir <- snakemake@params$methylation_dir
-calibrationChr <- snakemake@params$calibration_chr
-allowedBiotypes <- snakemake@params$biotypes
-tssDistances <- snakemake@params$tss_distances
-numThreads <- snakemake@threads
-targetPmdFile <- snakemake@output$pmd_all
-targetUmrLmrFile <- snakemake@output$umr_lmr_all
-minimumCoverage <- snakemake@params$min_coverage
-fdrCutoff <- snakemake@params$fdr_cutoff
-methylationCutoff <- snakemake@params$methylation_cutoff
 
 snakemake@source("regionAnnotation.R")
 
@@ -138,7 +154,7 @@ cgiRanges <- suppressWarnings(resize(cgiRanges, 5000, fix = "center"))
 for (sample in samples) {
 
   methylationValues <- fread(
-    paste0(methylationDir, "/", sample, "_CpG.bedGraph"),
+    paste0(methylationDir, sample, "_CpG.bedGraph"),
     skip = 1L,
     header = FALSE,
     col.names = c("chr", "start", "end", "methPercent", "methylated", "unmethylated")
@@ -148,7 +164,7 @@ for (sample in samples) {
   values(sampleRanges)$T <- methylationValues$methylated + methylationValues$unmethylated
   values(sampleRanges)$M <- methylationValues$methylated
 
-  png(paste0(targetDir, "/", sample, "/alphaCalibration.png"))
+  png(paste0(targetDir, sample, "/alphaCalibration.png"))
   pmdSegments <- segmentPMDs(
     m = sampleRanges,
     chr.sel = calibrationChr,
@@ -157,7 +173,7 @@ for (sample in samples) {
   )
   dev.off()
 
-  png(paste0(targetDir, "/", sample, "/alphaPMDRemoved.png"))
+  png(paste0(targetDir, sample, "/alphaPMDRemoved.png"))
   plotAlphaDistributionOneChr(
     m = subsetByOverlaps(sampleRanges, pmdSegments[values(pmdSegments)$type == "notPMD"]),
     chr.sel = calibrationChr,
@@ -165,7 +181,7 @@ for (sample in samples) {
   )
   dev.off()
 
-  png(paste0(targetDir, "/", sample, "/pmd.png"), width = SEGMENTATION_WIDTH_PX, height = SEGMENTATION_HEIGHT_PX, pointsize = SEGMENTATION_FONT_SIZE)
+  png(paste0(targetDir, sample, "/pmd.png"), width = SEGMENTATION_WIDTH_PX, height = SEGMENTATION_HEIGHT_PX, pointsize = SEGMENTATION_FONT_SIZE)
   plotPMDSegmentation(
     m = sampleRanges,
     segs = pmdSegments,
@@ -183,14 +199,14 @@ for (sample in samples) {
   )
   pmdSegmentTable <- pmdSegmentTable[type == "PMD"]
 
-  fwrite(pmdSegmentTable, file = paste0(targetDir, "/", sample, "/pmd-segments.csv"))
+  fwrite(pmdSegmentTable, file = paste0(targetDir, sample, "/pmd-segments.csv"))
 
   segmentIntoUMRsAndLMRs(
     sample = sample,
     methylationRanges = sampleRanges,
     cgiRanges = cgiRanges,
     numThreads = numThreads,
-    targetDir = paste0(targetDir, "/", sample, "/LMRUMRwithPMD/"),
+    targetDir = paste0(targetDir, sample, "/LMRUMRwithPMD/"),
     genomeSeq = fastaRef,
     seqLengths = seqlengths(fastaRef),
     pmdSegments = pmdSegments,
@@ -204,7 +220,7 @@ for (sample in samples) {
     methylationRanges = sampleRanges,
     cgiRanges = cgiRanges,
     numThreads = numThreads,
-    targetDir = paste0(targetDir, "/", sample, "/LMRUMRwithoutPMD/"),
+    targetDir = paste0(targetDir, sample, "/LMRUMRwithoutPMD/"),
     genomeSeq = fastaRef,
     seqLengths = seqlengths(fastaRef),
     pmdSegments = NA,
