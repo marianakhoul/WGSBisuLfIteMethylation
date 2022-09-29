@@ -5,17 +5,17 @@
 ##
 ## Workflow Description
 
-import "./Alignment.wdl" as Alignment
-import "./Fastqc.wdl" as Fastqc
-import "./DMR_Calling.wdl" as DMR_Calling
-import "./DMR_Comparison.wdl" as DMR_Comparison
-import "./Segmentation.wdl" as Segmentation
+#import "./Alignment.wdl" as Alignment
+#import "./Fastqc.wdl" as Fastqc
+#import "./DMR_Calling.wdl" as DMR_Calling
+#import "./DMR_Comparison.wdl" as DMR_Comparison
+#import "./Segmentation.wdl" as Segmentation
 
-#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
-#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
-#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Calling.wdl" as DMR_Calling
-#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Comparison.wdl" as DMR_Comparison
-#import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Segmentation.wdl" as Segmentation
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Alignment.wdl" as Alignment
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Fastqc.wdl" as Fastqc
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Calling.wdl" as DMR_Calling
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/DMR_Comparison.wdl" as DMR_Comparison
+import "https://raw.githubusercontent.com/marianakhoul/WGSBisuLfIteMethylation/main/Segmentation.wdl" as Segmentation
 
 workflow WGSBisuLfIteMethylation {
     
