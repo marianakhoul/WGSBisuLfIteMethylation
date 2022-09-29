@@ -19,7 +19,7 @@ task methylseekr {
     Float methylation_cutoff
     
     command {
-      Rscript /usr/local/bin/methylseekRSegmentation.R
+      Rscript /usr/local/bin/methylseekRSegmentation.R --cgiAnnotation cgi_annotation_file --geneAnnotation gene_annotation_file --threads 10 --repeatMaskerAnnotation repeat_masker_annotation_file
     }
     runtime {
      docker: docker_image
