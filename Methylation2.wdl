@@ -255,7 +255,7 @@ workflow WGSBisuLfIteMethylation {
         File methyl_dackel_output = methyl_dackel.methyl_dackel_output
         File methylation_metrics_ouput = methylation_metrics.methylation_metrics_output
         File bedgraph_ratio = bedgraph_to_methylation_ratio.bedgraph_ratio
-        File metilene_input_file = metilene_input.bedGraph
+        File metilene_input_file = metilene_input.metilene_input_file
         File metilene_output_file = metilene.metilene_output
         File bsseq_rdata_file = bsseq.rdata_file
         File bsseq_csv_file = bsseq.csv_file
