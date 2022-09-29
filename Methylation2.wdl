@@ -42,7 +42,7 @@ workflow WGSBisuLfIteMethylation {
     String qualimap_docker = "pegi3s/qualimap"  
     String bwa_meth_docker = "nfcore/methylseq"
     String gotc_docker = "broadinstitute/genomes-in-the-cloud:2.3.1-1512499786"
-    String bedtools_docker = "biocontainers/bedtools"
+    String bedtools_docker = "biocontainers/bedtools:v2.27.1dfsg-4-deb_cv1"
     
     # Reference Fasta
     File ref_fasta
