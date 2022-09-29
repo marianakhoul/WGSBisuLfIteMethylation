@@ -6,12 +6,13 @@
 task dmr_combination {
     
     String docker_image
-    File ref_fasta_index
+    File ref_index
     File metilene_input_file
     File bsseq_input
 
     command {
-     Rscript /usr/local/bin/dmrCombination.R --bsseq_input ${bsseq_input} --metilene_input ${metilene_input_file} --fasta_index ${ref_fasta_index} --bed_output combined-dmrs.csv --csv_output combined-dmrs.bed
+     Rscript /usr/local/bin/dmrCombination.R --bsseq_input ${bsseq_input} --metilene_input ${metilene_input_file} --fasta_index ${ref_index} --bed_output "combined-dmrs.csv" --csv_output 
+"combined-dmrs.bed"
     }
     
     runtime {
