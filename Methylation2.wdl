@@ -198,7 +198,7 @@ workflow WGSBisuLfIteMethylation {
     call DMR_Comparison.dmr_combination {
         input:
             docker_image = R_docker,
-            ref_fasta_index = ref_index,
+            ref_index = ref_index,
             metilene_input_file = metilene.metilene_output,
             bsseq_input = bsseq.csv_file          
     }
@@ -230,7 +230,7 @@ workflow WGSBisuLfIteMethylation {
             cgi_annotation_file = cgi_annotation_file,
             gene_annotation_file = gene_annotation_file,
             repeat_masker_annotation_file = repeat_masker_annotation_file,
-            sample_name = sample_name,
+            samples = samples,
             tss_distances = tss_distances,
             methylation_table = methyl_dackel.methyl_dackel_output,
             ref_fasta = ref_fasta,
